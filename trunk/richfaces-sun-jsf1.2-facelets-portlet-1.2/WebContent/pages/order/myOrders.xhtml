@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		 xmlns:a4j="http://richfaces.org/a4j"
+		   xmlns:rich="http://richfaces.org/rich"
+		>
+	
+		<h:form>
+		
+         <h:commandLink   value="Göster"   action="#{orderController.search}">
+             </h:commandLink> 
+
+
+		
+     <rich:dataTable 
+                    id="datatable"  
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+                    cellpadding="0" cellspacing="0" rendered="#{not empty orderController.orderList}"
+                    width="700" border="0" var="valueTemp" value="#{orderController.orderList}">
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Order Name"/>
+             </f:facet>
+          <h:outputText value="#{valueTemp.basket.productNames}" />
+        </rich:column>
+        
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="İnsert Date"/>
+             </f:facet>
+          <h:outputText value="#{valueTemp.insertDate}" />
+        </rich:column>
+        
+         <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Status"/>
+             </f:facet>
+          <h:outputText value="#{valueTemp.status.name}" />
+        </rich:column>
+        
+       
+        
+    </rich:dataTable>
+    <rich:datascroller align="left" for="datatable" maxPages="10" renderIfSinglePage="false"/>    
+    
+   
+        
+</h:form>
+	
+</f:view>
+    

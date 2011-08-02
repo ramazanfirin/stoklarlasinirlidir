@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2007 10:50:57 AM by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping package="com.kalite.portal.ss.model.model">
+	<class name="Order" table="Order_temp" lazy="false">
+		
+		<id name="id" type="java.lang.Long">
+		<column name="ID" precision="5" scale="0" />
+			<generator class="native">
+				<param name="sequence">seq_order</param>
+			</generator>
+		</id>
+		
+		<property name="name" unique="true" type="java.lang.String">
+			<column name="name" unique="true"/>
+		</property>
+          
+		<property name="active" type="java.lang.Boolean">
+			<column name="active" />
+		</property>
+                          
+		<many-to-one name="basket" class="com.kalite.portal.ss.model.model.Basket" column="basket_ID" 
+			cascade="all" not-null="true" />
+		
+		<property name="insertDate" type="date">
+			<column name="inserDate" />
+		</property>
+		
+		<property name="updateDate" type="date">
+			<column name="updateDate" />
+		</property>		
+		
+		<property name="userId" type="java.lang.Long">
+			<column name="userId" />
+		</property>	
+		
+		<many-to-one name="status" class="com.kalite.portal.ss.model.model.OrderStatus" column="Status_Id" 
+	    not-null="true" />
+		
+	</class>
+</hibernate-mapping>

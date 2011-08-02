@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+ 
+	<context:annotation-config />
+	
+	<bean scope="singleton" id="productManager" 
+		class="com.kalite.portal.ss.service.manager.ProductManager">
+		<property name="productDao" ref="productDao" />
+	</bean>
+
+	<bean scope="singleton" id="productDao" 
+		class="com.kalite.portal.ss.service.dao.ProductDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!--    -->
+	<bean scope="singleton" id="parameterManager" 
+		class="com.kalite.portal.ss.service.manager.ParameterManager">
+		<property name="dao" ref="parameterDao" />
+	</bean>
+
+	<bean scope="singleton" id="parameterDao" 
+		class="com.kalite.portal.ss.service.dao.ParameterDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!--    -->
+	<bean scope="singleton" id="campaignManager" 
+		class="com.kalite.portal.ss.service.manager.CampaignManager">
+		<property name="dao" ref="campaignDao" />
+	</bean>
+
+	<bean scope="singleton" id="campaignDao" 
+		class="com.kalite.portal.ss.service.dao.CampaignDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!--  -->
+	<bean scope="singleton" id="basketDao" 
+		class="com.kalite.portal.ss.service.dao.BasketDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean scope="singleton" id="basketManager" 
+		class="com.kalite.portal.ss.service.manager.BasketManager">
+		<property name="dao" ref="basketDao" />
+	</bean>
+
+	
+	<!--  -->
+	<bean scope="singleton" id="orderDao" 
+		class="com.kalite.portal.ss.service.dao.OrderDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean scope="singleton" id="orderManager" 
+		class="com.kalite.portal.ss.service.manager.OrderManager">
+		<property name="dao" ref="orderDao" />
+	</bean>
+	
+	
+	<bean scope="singleton" id="serviceProvider" 
+		class="com.kalite.portal.ss.service.ServiceProvider">
+		<property name="productManager" ref="productManager" />
+		<property name="parameterManager" ref="parameterManager" />
+		<property name="campaignManager" ref="campaignManager" />
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="basketManager" ref="basketManager" />
+		<property name="orderManager" ref="orderManager" />
+	</bean>
+		
+	<bean scope="singleton" id="cacheManager" 
+		class="com.kalite.portal.ss.service.manager.CacheManager">
+		<property name="productManager" ref="productManager" />
+		<property name="campaignManager" ref="campaignManager" />
+	</bean>	
+			
+</beans>
+

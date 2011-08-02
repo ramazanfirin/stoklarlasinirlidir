@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		 xmlns:a4j="http://richfaces.org/a4j"
+		   xmlns:rich="http://richfaces.org/rich"
+		>
+	
+		<h:form>
+		
+       <h:messages/>
+		
+     <rich:dataTable 
+                    id="datatable"  
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+                    cellpadding="0" cellspacing="0" rendered="#{not empty basketController.basket.campaignList}"
+                    width="700" border="0" var="campaignTemp" value="#{basketController.basket.campaignList}">
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Campaign Name"/>
+             </f:facet>
+          <h:outputText value="#{campaignTemp.name}" />
+        </rich:column>
+        
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Campaignslogan"/>
+             </f:facet>
+          <h:outputText value="#{campaignTemp.slogan}" />
+        </rich:column>
+        
+         <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Product Name"/>
+             </f:facet>
+          <h:outputText value="#{campaignTemp.product.name}" />
+        </rich:column>
+
+       <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Adet"/>
+             </f:facet>
+         <rich:inputNumberSpinner value="50" >
+         
+         <!-- 	
+         	
+            
+ </a4j:support>
+             -->
+         </rich:inputNumberSpinner>
+              
+         
+         
+      
+         
+        </rich:column>
+       
+       
+        
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Option"/>
+             </f:facet>
+             
+           <h:commandLink   value="Sil" action="#{basketController.deleteFromBasket}">
+             	 <f:param name="id" value="#{campaignTemp.id}"/>
+             </h:commandLink>  
+          
+        </rich:column>
+        
+       
+        
+    </rich:dataTable>
+    <rich:datascroller align="left" for="datatable" maxPages="10" renderIfSinglePage="false"/>    
+    
+    <h:commandLink   value="Satın Al"   action="#{basketController.buyBasket}">
+             	
+             </h:commandLink>
+        
+</h:form>
+	
+</f:view>
+    

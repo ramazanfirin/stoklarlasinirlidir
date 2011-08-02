@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		 xmlns:a4j="http://richfaces.org/a4j"
+		   xmlns:rich="http://richfaces.org/rich"
+		>
+	
+		<h:form>
+		
+		<h:commandButton value="Add Product" action="#{productController.addProduct}">
+             	 
+             </h:commandButton>
+		
+     <rich:dataTable 
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+                    cellpadding="0" cellspacing="0" 
+                    width="700" border="0" var="productTemp" value="#{productController.productList}">
+
+ 
+
+
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Name"/>
+             </f:facet>
+          <h:outputText value="#{productTemp.name}" />
+        </rich:column>
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="brand"/>
+             </f:facet>
+          <h:outputText value="#{productTemp.brand}" />
+        </rich:column>
+        
+        
+		<rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Tip"/>
+             </f:facet>
+          <h:outputText value="#{productTemp.type}" />
+        </rich:column>
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Name"/>
+             </f:facet>
+          <h:outputText value="#{productTemp.imageUrl}" />
+        </rich:column>
+        
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Option"/>
+             </f:facet>
+             
+           <h:commandLink   value="Edit" action="#{productController.editProduct}">
+             	 <f:param name="id" value="#{productTemp.id}"/>
+             </h:commandLink>  
+          
+        </rich:column>
+        
+       
+        
+    </rich:dataTable>
+        
+</h:form>
+	
+</f:view>
+    

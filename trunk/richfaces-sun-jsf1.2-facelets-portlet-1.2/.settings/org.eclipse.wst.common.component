@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="richfaces-sun-jsf1.2-facelets-portlet-1.2">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes/" source-path="/ImportedClasses"/>
+        <property name="context-root" value="richfaces-sun-jsf1.2-facelets-portlet-1.2"/>
+        <property name="java-output-path" value="/richfaces-sun-jsf1.2-facelets-portlet-1.2/build/classes"/>
+    </wb-module>
+</project-modules>

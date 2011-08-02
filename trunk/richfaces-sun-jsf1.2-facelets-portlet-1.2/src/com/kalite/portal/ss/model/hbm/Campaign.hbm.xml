@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2007 10:50:57 AM by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping package="com.kalite.portal.ss.model.model">
+	<class name="Campaign" table="campaign" lazy="false">
+		
+		<id name="id" type="java.lang.Long">
+		<column name="ID" precision="5" scale="0" />
+			<generator class="native">
+				<param name="sequence">seq_campaign</param>
+			</generator>
+		</id>
+		
+		<property name="name" unique="true" type="java.lang.String">
+			<column name="name" unique="true"/>
+		</property>
+		
+		<property name="active" type="java.lang.Boolean">
+			<column name="active" />
+		</property>
+	
+	
+	
+	
+	
+		      
+		<property name="slogan" type="java.lang.String">
+			<column name="slogan" />
+		</property>
+
+		<property name="stockCount" type="java.lang.Long">
+			<column name="stockCount" />
+		</property>
+		
+		<property name="sellingCount" type="java.lang.Long">
+			<column name="sellingCount" />
+		</property>
+		
+		<property name="price" type="java.lang.Double">
+			<column name="price" />
+		</property>
+		
+		<property name="startDate" type="date">
+			<column name="startDate" />
+		</property>
+		
+		<property name="finishDate" type="date">
+			<column name="finishDate" />
+		</property>
+	
+		<many-to-one name="product" class="com.kalite.portal.ss.model.model.Product" column="product_ID" 
+			cascade="all" not-null="true" />
+		
+	</class>
+</hibernate-mapping>

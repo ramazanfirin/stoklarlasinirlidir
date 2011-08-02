@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		 xmlns:a4j="http://richfaces.org/a4j"
+		   xmlns:rich="http://richfaces.org/rich"
+		>
+	
+		<h:form>
+		
+		
+		<h:commandButton value="listele" action="#{campaignController.search}"/>
+		<h:commandButton value="Add Campaign" action="#{campaignController.add}">
+             	 
+             </h:commandButton>
+		
+     <rich:dataTable 
+                    id="datatable"  
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+                    cellpadding="0" cellspacing="0" rendered="#{not empty campaignController.campaignList}"
+                    width="700" border="0" var="campaign" value="#{campaignController.campaignList}">
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Name"/>
+             </f:facet>
+          <h:outputText value="#{campaign.name}" />
+        </rich:column>
+        
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="slogan"/>
+             </f:facet>
+          <h:outputText value="#{campaign.slogan}" />
+        </rich:column>
+        
+         <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Ürün"/>
+             </f:facet>
+          <h:outputText value="#{campaign.product.name}" />
+        </rich:column>
+
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="stockCount"/>
+             </f:facet>
+          <h:outputText value="#{campaign.stockCount}" />
+        </rich:column>
+        
+         <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="sellingCount"/>
+             </f:facet>
+          <h:outputText value="#{campaign.sellingCount}" />
+        </rich:column>
+        
+        
+		<rich:column>
+            <f:facet name="header">
+                 <h:outputText value="price"/>
+             </f:facet>
+          <h:outputText value="#{campaign.price}" />
+        </rich:column>      
+
+        
+        
+        <rich:column>
+            <f:facet name="header">
+                 <h:outputText value="Option"/>
+             </f:facet>
+             
+           <h:commandLink   value="Edit" action="#{campaignController.edit}">
+             	 <f:param name="id" value="#{campaign.id}"/>
+             </h:commandLink>  
+          
+        </rich:column>
+        
+       
+        
+    </rich:dataTable>
+    <rich:datascroller align="left" for="datatable" maxPages="10" renderIfSinglePage="false"/>    
+        
+</h:form>
+	
+</f:view>
+    

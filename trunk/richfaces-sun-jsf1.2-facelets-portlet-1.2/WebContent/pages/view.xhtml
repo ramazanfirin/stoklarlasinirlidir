@@ -1,0 +1,44 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:a4j="http://richfaces.org/a4j" 
+xmlns:rich="http://richfaces.org/rich">
+	<f:view>
+		<f:loadBundle basename="Language" var="msgs" />
+
+		<h:form>
+			<table>
+			<tr>
+				<td>
+					<font class="portlet-font" style="font-size: x-small;">
+					<h:outputText value="#{msgs.please_enter_your_name}" />
+					</font>
+				</td>
+				<td>
+					<h:inputText id="name" styleClass="form-text" value="#{user.name}">
+						<a4j:support event="onkeyup" reRender="outputName" />
+					</h:inputText>
+					<h:outputText value=" AJAX Retype: " />
+					<h:outputText id="outputName" value="#{user.name}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputText value="#{msgs.please_enter_birthday}" />
+				</td>
+				<td>
+					<rich:calendar value="#{user.dateOfBirth}"
+	               			popup="true"
+	               			showApplyButton="false" cellWidth="24px" cellHeight="22px" 
+	               			inputSize="17"
+	               			style="width:200px;" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<h:commandButton action="submit" styleClass="portlet-form-button" value="Submit" />
+				</td>
+			</tr>
+			</table>
+		</h:form>
+	</f:view>	
+</div>

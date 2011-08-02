@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		>
+	
+		<h:form>
+		<h:messages globalOnly="true" layout="table"/>
+		
+		<h:outputText value="İsim" />
+		<h:inputText id="name" required="true" value="#{campaignController.campaign.name}"></h:inputText>
+		<h:message for="name" />
+		<br/>
+		
+		<h:outputText value="slogan" />
+		<h:inputText id="brand" required="true" value="#{campaignController.campaign.slogan}"></h:inputText>
+		<h:message for="brand" />
+		<br></br>
+		
+		<h:outputText value="Toplam stok" />
+		<h:inputText id="type" required="true" value="#{campaignController.campaign.stockCount}">
+			<f:converter converterId="javax.faces.Long"/>
+		</h:inputText>
+		<h:message for="type" />
+		<br></br>
+		
+		<h:outputText value="Fiyat" />
+		<h:inputText id="price" required="true"  value="#{campaignController.campaign.price}">
+			<f:converter converterId="javax.faces.Double"/>
+		</h:inputText>
+		<h:message for="price" />
+		<br></br>
+
+		<h:outputText value="Ürün" />
+		<h:selectOneMenu id="product" value="#{campaignController.campaign.product.id}" required="true">
+			<f:selectItems value="#{cacheController.productListSelectItem}" />
+		</h:selectOneMenu>
+		<h:message for="product" />    
+		<br></br>
+
+		
+		
+		<h:commandButton action="#{campaignController.gotoViewPage}" value="İptal" immediate="true"></h:commandButton>
+		<h:commandButton action="#{campaignController.save}" value="Kaydet" ></h:commandButton>    
+		<br></br>
+		
+		
+		</h:form>
+
+</f:view>
+    

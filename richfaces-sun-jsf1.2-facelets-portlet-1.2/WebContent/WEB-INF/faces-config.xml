@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+	<application>
+		<view-handler>org.jboss.portletbridge.application.PortletViewHandler</view-handler>
+		<state-manager>org.jboss.portletbridge.application.PortletStateManager</state-manager>
+		<locale-config>
+			<default-locale>en</default-locale>
+		</locale-config>
+	</application>
+	
+	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>com.liferay.samplejsffacelets.bean.UserBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- Cache Manager -->
+	<managed-bean>
+		<managed-bean-name>cacheController</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.web.bean.cache.CacheController</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>	
+	
+	
+	<!-- Model Beans -->
+	<managed-bean>
+		<managed-bean-name>product</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.model.model.Product</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>campaign</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.model.model.Campaign</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>basket</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.model.model.Basket</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+		<managed-bean>
+		<managed-bean-name>order</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.model.model.Order</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!--  -->
+	
+	<!-- productPortlet -->
+	<managed-bean>
+		<managed-bean-name>productController</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.web.bean.product.ProductController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+	      <property-name>product</property-name>
+	      <value>#{product}</value>
+	    </managed-property>    
+	</managed-bean>
+	
+	<navigation-rule>
+		<from-view-id>/pages/product/list.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoUpdatePage</from-outcome>
+			<to-view-id>/pages/product/update.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/product/update.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoResultPage</from-outcome>
+			<to-view-id>/pages/product/result.xhtml</to-view-id>
+		</navigation-case>           
+	</navigation-rule>
+	     
+	<navigation-rule>
+		<from-view-id>/pages/product/update.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoViewPage</from-outcome>
+			<to-view-id>/pages/product/list.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/product/result.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoViewPage</from-outcome>
+			<to-view-id>/pages/product/list.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/product/update.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoViewPage</from-outcome>
+			<to-view-id>/pages/product/list.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- campaignPortlet -->    
+	
+	<managed-bean>
+		<managed-bean-name>campaignController</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.web.bean.campaign.CampaignController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+	      <property-name>campaign</property-name>
+	      <value>#{campaign}</value>
+	    </managed-property>    
+	</managed-bean>
+	
+	<navigation-rule>
+		<from-view-id>/pages/campaign/list.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoUpdatePage</from-outcome>
+			<to-view-id>/pages/campaign/update.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/campaign/update.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoResultPage</from-outcome>
+			<to-view-id>/pages/campaign/result.xhtml</to-view-id>
+		</navigation-case>           
+	</navigation-rule>
+	     
+	<navigation-rule>
+		<from-view-id>/pages/campaign/update.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoViewPage</from-outcome>
+			<to-view-id>/pages/campaign/list.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/campaign/result.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gotoViewPage</from-outcome>
+			<to-view-id>/pages/campaign/list.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+		<!-- WelcomePortlet -->
+	
+	<managed-bean>
+		<managed-bean-name>welcomeController</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.web.bean.welcome.WelcomeController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+	      <property-name>campaign</property-name>
+	      <value>#{campaign}</value>
+	    </managed-property>    
+	</managed-bean>
+	                                      
+		<!-- BasketPortlet -->
+	
+	<managed-bean>
+		<managed-bean-name>basketController</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.web.bean.basket.BasketController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope> 
+		<managed-property>
+	      <property-name>basket</property-name>
+	      <value>#{basket}</value>
+	    </managed-property>    
+	</managed-bean>
+	
+	                                     
+		<!-- OrderPortlet -->
+	
+	<managed-bean>
+		<managed-bean-name>orderController</managed-bean-name>
+		<managed-bean-class>com.kalite.portal.ss.web.bean.order.OrderController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope> 
+		   
+	</managed-bean>
+	
+	
+	<!--           Delete         -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>help</from-outcome>
+			<to-view-id>/pages/help.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>back</from-outcome>
+			<to-view-id>/pages/view.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>submit</from-outcome>
+			<to-view-id>/pages/submit.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+		
+	
+	
+</faces-config>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2007 10:50:57 AM by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping package="com.kalite.portal.ss.model.model">
+	<class name="Basket" table="Basket" lazy="false">
+		
+		<id name="id" type="java.lang.Long">
+		<column name="ID" precision="5" scale="0" />
+			<generator class="native">
+				<param name="sequence">seq_basket</param>
+			</generator>
+		</id>
+		
+		<property name="name" unique="true" type="java.lang.String">
+			<column name="name" unique="true"/>
+		</property>
+
+		<property name="active" type="java.lang.Boolean">
+			<column name="active" />
+		</property>
+
+
+	    <bag name="campaignList" cascade="all">
+                 <key column="basket_id"/> <!-- campaignid ->basketid oalrak degistir -->
+                 <one-to-many class="Campaign"/>
+          </bag>
+		
+		
+		           
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		>
+	
+		<h:form>
+		<h:messages globalOnly="true" layout="table"/>
+		
+		<h:outputText value="İsim" />
+		<h:inputText id="name" required="true" value="#{productController.product.name}"></h:inputText>
+		<h:message for="name" />
+		<br/>
+		
+		<h:outputText value="Marka" />
+		<h:inputText id="brand" required="true" value="#{productController.product.brand}"></h:inputText>
+		<h:message for="brand" />
+		<br></br>
+		
+		<h:outputText value="Tip" />
+		<h:inputText id="type" required="true" value="#{productController.product.type}"></h:inputText>
+		<h:message for="type" />
+		<br></br>
+		
+		<h:outputText value="Resim" />
+		<h:inputText id="imageUrl" required="true" value="#{productController.product.imageUrl}"></h:inputText>
+		<h:message for="imageUrl" />
+		<br></br>
+		<h:commandButton action="#{productController.gotoViewPage}" value="İptal" ></h:commandButton>
+		<h:commandButton action="#{productController.submit}" value="Kaydet" ></h:commandButton>
+		<br></br>
+		
+		
+		</h:form>
+
+</f:view>
+    

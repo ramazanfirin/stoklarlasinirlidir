@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<f:view xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.prime.com.tr/ui"
+		 xmlns:a4j="http://richfaces.org/a4j"
+		   xmlns:rich="http://richfaces.org/rich"
+		>
+	
+		<h:form>
+		<h:outputText value="#{welcomeController.name}" style="font-weight:bold" />
+		     Kampanyadaki ürünler
+			<h:dataTable id="dt1" value="#{cacheController.activeCampaignList}" var="campaignTemp" >
+			<h:column>
+				<h:outputText value="#{campaignTemp.product.name}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{campaignTemp.stockCount}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<h:outputText value="#{campaignTemp.sellingCount}"></h:outputText>
+			</h:column>
+
+			<h:column>
+			<h:commandLink   value="İncele" action="#{welcomeController.select}">
+             	 <f:param name="id" value="#{campaignTemp.id}"/>
+             </h:commandLink>    
+			</h:column>
+		</h:dataTable>
+		
+		
+		</h:form>
+	
+</f:view>
+    

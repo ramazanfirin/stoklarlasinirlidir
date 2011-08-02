@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+
+<portlet-app
+	version="2.0"
+	xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+>
+	<portlet>
+		<portlet-name>1</portlet-name>
+		<display-name>Sample Richfaces JSF 1.2 Sun Facelets</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/view.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		 <init-param>
+         <name>javax.portlet.faces.preserveActionParams</name>
+         <value>true</value>
+      </init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Sample Richfaces JSF 1.2 Sun Facelets</title>
+			<short-title>Sample Richfaces JSF 1.2 Sun Facelets</short-title>
+			<keywords>Sample Richfaces JSF 1.2 Sun Facelets</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	
+	
+<!-- productPortlet -->
+
+	<portlet>
+		<portlet-name>productPortlet</portlet-name>
+		<display-name>productPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/product/list.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>productPortlet</title>
+			<short-title>productPortlet</short-title>
+			<keywords>productPortlet</keywords>
+		</portlet-info>
+	</portlet>
+	
+<!-- campaingPortlet -->	
+
+	
+
+	<portlet>
+		<portlet-name>campaignPortlet</portlet-name>
+		<display-name>campaignPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/campaign/list.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>campaignPortlet</title>
+			<short-title>campaignPortlet</short-title>
+			<keywords>campaignPortlet</keywords>
+		</portlet-info>
+	</portlet>
+<!-- welcomeCampaignPortlet -->		
+<portlet>
+		<portlet-name>welcomeCampaignPortlet</portlet-name>
+		<display-name>welcomeCampaignPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/welcome/campaignDetail.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>welcomeCampaignPortlet</title>
+			<short-title>welcomeCampaignPortlet</short-title>
+			<keywords>welcomeCampaignPortlet</keywords>
+		</portlet-info>
+	</portlet>
+<!-- welcomeCampaignListPortlet -->		
+<portlet>
+		<portlet-name>welcomeCampaignListPortlet</portlet-name>
+		<display-name>welcomeCampaignListPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/welcome/campaignList.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>welcomeCampaignListPortlet</title>
+			<short-title>welcomeCampaignListPortlet</short-title>
+			<keywords>welcomeCampaignListPortlet</keywords>
+		</portlet-info>
+	</portlet>
+
+<!-- basketSummaryPortlet -->		
+<portlet>
+		<portlet-name>basketSummaryPortlet</portlet-name>
+		<display-name>basketSummaryPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/basket/basketSummary.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>basketSummaryPortlet</title>
+			<short-title>basketSummaryPortlet</short-title>
+			<keywords>basketSummaryPortlet</keywords>
+		</portlet-info>
+	</portlet>
+
+<!-- basketPortlet -->		
+<portlet>
+		<portlet-name>basketPortlet</portlet-name>
+		<display-name>basketPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/basket/basket.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/pages/edit.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.help</name>
+			<value>/pages/help.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>basketPortlet</title>
+			<short-title>basketPortlet</short-title>
+			<keywords>basketPortlet</keywords>
+		</portlet-info>
+	</portlet>
+
+	<!-- myOrdersPortlet -->		
+<portlet>       
+		<portlet-name>myOrdersPortlet</portlet-name>
+		<display-name>myOrdersPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/order/myOrders.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>myOrdersPortlet</title>
+			<short-title>myOrdersPortlet</short-title>
+			<keywords>myOrdersPortlet</keywords>
+		</portlet-info>
+	</portlet>
+	
+		<!-- orderListPortlet -->		
+<portlet>       
+		<portlet-name>orderListPortlet</portlet-name>
+		<display-name>orderListPortlet</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/pages/order/orderList.xhtml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>orderListPortlet</title>
+			<short-title>orderListPortlet</short-title>
+			<keywords>orderListPortlet</keywords>
+		</portlet-info>
+	</portlet>
+	
+
+
+<!--  -->	
+</portlet-app>

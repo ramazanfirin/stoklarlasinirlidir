@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.1.xsd">
+	
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${hibernate.connection.driver_class}</value>
+		</property>
+		<property name="url">
+			<value>${hibernate.connection.url}</value>
+		</property>
+		<property name="username">
+			<value>${hibernate.connection.username}</value>
+		</property>
+		<property name="password">
+			<value>${hibernate.connection.password}</value>
+		</property>
+	</bean>
+	
+
+		
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="mappingLocations">
+			<list>
+				
+                 
+				
+				<value>
+					classpath*:/com/kalite/portal/ss/model/hbm/Basket.hbm.xml     
+				</value>   
+				<value>
+					classpath*:/com/kalite/portal/ss/model/hbm/Campaign.hbm.xml     
+				</value> 
+				<value>
+					classpath*:/com/kalite/portal/ss/model/hbm/Product.hbm.xml     
+				</value>
+				<value>
+					classpath*:/com/kalite/portal/ss/model/hbm/OrderStatus.hbm.xml     
+				</value> 
+			    <value>
+					classpath*:com/kalite/portal/ss/model/hbm/Order.hbm.xml     
+				</value>                 
+				 
+			</list>
+		</property>    
+		          
+		<property name="hibernateProperties">
+			<value>
+				hibernate.show_sql=true
+				hibernate.format_sql=${hibernate.format_sql}
+				hibernate.hbm2ddl.auto=update
+				hibernate.c3p0.minPoolSize=${hibernate.c3p0.minPoolSize}
+				hibernate.c3p0.maxPoolSize=${hibernate.c3p0.maxPoolSize}
+				hibernate.timeout=${hibernate.timeout}
+				hibernate.max_statement=${hibernate.max_statement}
+				hibernate.query.factory_class = org.hibernate.hql.ast.ASTQueryTranslatorFactory
+			</value>
+		</property>
+	</bean>
+
+
+</beans>

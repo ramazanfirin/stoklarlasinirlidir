@@ -37,7 +37,7 @@
         </tr>
       </table>
     </div>
-    <div class="content">
+    <div id="module_cart_confirm" class="content">
       <table width="100%">
         <tr>
           <th align="left"><?php echo $column_product; ?></th>

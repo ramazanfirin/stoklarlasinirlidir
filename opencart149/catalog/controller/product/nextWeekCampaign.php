@@ -70,7 +70,7 @@ class ControllerProductNextWeekCampaign extends Controller {
 			
        		$this->data['products'] = array();
 				
-			$results = $this->model_catalog_product->getProductSpecials($sort, $order, ($page - 1) * $this->config->get('config_catalog_limit'), $this->config->get('config_catalog_limit'));
+			$results = $this->model_catalog_product->getNextWeekCampaigns();
         		
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -94,14 +94,14 @@ class ControllerProductNextWeekCampaign extends Controller {
 				}
 							
 				$this->data['products'][] = array(
-           			'name'    => $result['name'],
+           			'name'    => $result['model'],
 					'model'   => $result['model'],
 					'rating'  => $rating,
 					'stars'   => sprintf($this->language->get('text_stars'), $rating),
            			'thumb'   => $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
            			'price'   => $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))),
-           			'options' => $options,
-					'special' => $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'))),
+					'options' => $options,
+           			'special' => $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'))),
 					'href'    => $this->model_tool_seo_url->rewrite(HTTP_SERVER . 'index.php?route=product/product' . $url . '&product_id=' . $result['product_id']),
 					'add'	  => $add
        			);

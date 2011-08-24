@@ -572,5 +572,43 @@ class ModelCatalogProduct extends Model {
 		
 		return $query->rows;
 	}
+	
+	public function getNextWeekCampaigns() {
+		if ($this->customer->isLogged()) {
+			$customer_group_id = $this->customer->getCustomerGroupId();
+		} else {
+			$customer_group_id = $this->config->get('config_customer_group_id');
+		}		
+		
+		$sql = "SELECT ps.product_id,p.model,p.image,p.price,ps.price as special,p. tax_class_id,ps.price,ps.date_start,ps.date_end,pm.name FROM product p 
+LEFT JOIN product_to_store p2s ON (p.product_id = p2s.product_id) 
+LEFT JOIN product_special ps ON (p.product_id = ps.product_id)
+LEFT JOIN manufacturer pm ON (p.manufacturer_id = pm.manufacturer_id) 
+WHERE p.status = '1' 
+AND p.date_available <= NOW() 
+AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) 
+AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) 
+AND ps.product_id NOT IN 
+(SELECT pd2.product_id FROM product_discount pd2 
+  WHERE p.product_id = pd2.product_id 
+  AND pd2.customer_group_id = 8 
+  AND pd2.quantity = '1' 
+  AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) 
+  AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())));";
+		
+		$sort_data = array(
+			'pd.name',
+			'p.sort_order',
+			'special',
+			'rating',
+			'p.price',
+			'p.model'
+		);
+		
+		$query = $this->db->query($sql);
+		
+		return $query->rows;
+			
+	}	
 }
 ?>

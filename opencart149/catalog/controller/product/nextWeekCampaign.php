@@ -72,7 +72,11 @@ class ControllerProductNextWeekCampaign extends Controller {
 				
 			$results = $this->model_catalog_product->getNextWeekCampaigns();
         		
-			foreach ($results as $result) {
+		$this->data['next_week_start_date'] =$this->model_catalog_product->getNextWeekStartDate();	
+		$this->data['next_week_end_date'] =$this->model_catalog_product->getNextWeekEndDate();
+		$this->data['tempString'] =$this->model_catalog_product->getTempString();
+		
+		foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $result['image'];
 				} else {

@@ -580,28 +580,21 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}		
 		
-		$currentDate = date("Y-m-d");// current date
-		$day_of_week = strftime("%u", strtotime(date("Y-m-d")))-1;
-		$current_week_start_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
-		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +6 day");
-		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
-		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
-		
 		$sql = "SELECT ps.product_id,p.model,p.image,p.price,ps.price as special,p. tax_class_id,ps.price,ps.date_start,ps.date_end,pm.name FROM product p 
 LEFT JOIN product_to_store p2s ON (p.product_id = p2s.product_id) 
 LEFT JOIN product_special ps ON (p.product_id = ps.product_id)
 LEFT JOIN manufacturer pm ON (p.manufacturer_id = pm.manufacturer_id) 
 WHERE p.status = '1' 
 AND p.date_available <= NOW() 
-AND ((ps.date_start = '0000-00-00' OR ps.date_start >= ".$next_week_start_date.")  
-AND (ps.date_end = '0000-00-00' OR ps.date_end <=".$next_week_end_date." )) 
+AND ((ps.date_start = '0000-00-00' OR ps.date_start >= '".$this->getNextWeekStartDate()."')  
+AND (ps.date_end = '0000-00-00' OR ps.date_end <='".$this->getNextWeekEndDate()."' )) 
 AND ps.product_id NOT IN 
 (SELECT pd2.product_id FROM product_discount pd2 
   WHERE p.product_id = pd2.product_id 
-  AND pd2.customer_group_id = 8 
+  AND pd2.customer_group_id = ".$customer_group_id." 
   AND pd2.quantity = '1' 
-  AND ((pd2.date_start = '0000-00-00' OR pd2.date_start > ".$next_week_start_date.") 
-  AND (pd2.date_end = '0000-00-00' OR pd2.date_end <" .$next_week_end_date.")));";
+  AND ((pd2.date_start = '0000-00-00' OR pd2.date_start > ".$this->getNextWeekStartDate().") 
+  AND (pd2.date_end = '0000-00-00' OR pd2.date_end <" .$this->getNextWeekEndDate().")));";
 		
 		$sort_data = array(
 			'pd.name',
@@ -617,5 +610,35 @@ AND ps.product_id NOT IN
 		return $query->rows;
 			
 	}	
+	
+	
+	
+	public function getTempString() {
+		
+		return $this->getNextWeekStartDate();
+	}
+	
+	public function getNextWeekStartDate() {
+		$currentDate = date("Y-m-d");// current date
+		$day_of_week = strftime("%u", strtotime(date("Y-m-d")))-1;
+		$current_week_start_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
+		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +6 day");
+		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
+		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
+		
+		return date('Y-m-d',$next_week_start_date);
+	}
+	
+	public function getNextWeekEndDate() {
+		$currentDate = date("Y-m-d");// current date
+		$day_of_week = strftime("%u", strtotime(date("Y-m-d")))-1;
+		$current_week_start_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
+		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +6 day");
+		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
+		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
+		
+		return date('Y-m-d',$next_week_end_date);
+	}
+	
 }
 ?>

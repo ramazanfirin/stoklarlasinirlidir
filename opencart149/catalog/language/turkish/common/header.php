@@ -12,6 +12,8 @@ $_['text_login']    = 'Üye Girişi';
 $_['text_logout']   = 'Çıkış';
 $_['text_cart']     = 'Sepetim';
 $_['text_checkout'] = 'Kasaya Git';
+$_['text_nextWeekCampaign'] = 'Gelecek Haftaki Kampanyalar';
+$_['text_oldCampaign'] = 'Eski Kampanyalar';
 
 $_['text_keyword']  = 'Aranacak kelime';
 $_['text_advanced'] = 'Gelişmiş Arama';

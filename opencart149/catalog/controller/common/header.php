@@ -73,7 +73,9 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_keyword'] = $this->language->get('text_keyword');
 		$this->data['text_category'] = $this->language->get('text_category');
 		$this->data['text_advanced'] = $this->language->get('text_advanced');
-
+		$this->data['text_nextWeekCampaign'] = $this->language->get('text_nextWeekCampaign');	
+		$this->data['text_oldCampaign'] = $this->language->get('text_oldCampaign');
+		
 		$this->data['entry_search'] = $this->language->get('entry_search');
 		
 		$this->data['button_go'] = $this->language->get('button_go');
@@ -88,7 +90,8 @@ class ControllerCommonHeader extends Controller {
 		$this->data['logout'] = HTTP_SERVER . 'index.php?route=account/logout';
     	$this->data['cart'] = HTTP_SERVER . 'index.php?route=checkout/cart';
 		$this->data['checkout'] = HTTPS_SERVER . 'index.php?route=checkout/shipping';
-		
+		$this->data['nextWeekCampaign'] = HTTPS_SERVER . 'index.php?route=product/nextWeekCampaign';
+		$this->data['oldCampaign'] = HTTPS_SERVER . 'index.php?route=product/oldCampaign';
 		if (isset($this->request->get['keyword'])) {
 			$this->data['keyword'] = $this->request->get['keyword'];
 		} else {

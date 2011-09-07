@@ -59,7 +59,14 @@ function bookmark(url, title) {
       <a href="<?php echo str_replace('&', '&amp;', $home); ?>"><img src="<?php echo $logo; ?>" title="<?php echo $store; ?>" alt="<?php echo $store; ?>" /></a>
       <?php } ?>
     </div>
-    <div class="div3"><a href="<?php echo str_replace('&', '&amp;', $special); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_special; ?></a><a onclick="bookmark(document.location, '<?php echo addslashes($title); ?>');" style="background-image: url('catalog/view/theme/default/image/bookmark.png');"><?php echo $text_bookmark; ?></a><a href="<?php echo str_replace('&', '&amp;', $contact); ?>" style="background-image: url('catalog/view/theme/default/image/contact.png');"><?php echo $text_contact; ?></a><a href="<?php echo str_replace('&', '&amp;', $sitemap); ?>" style="background-image: url('catalog/view/theme/default/image/sitemap.png');"><?php echo $text_sitemap; ?></a></div>
+    <div class="div3">
+    <a href="<?php echo str_replace('&', '&amp;', $special); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_special; ?></a>
+    <a href="<?php echo str_replace('&', '&amp;', $nextWeekCampaign); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_nextWeekCampaign; ?></a>
+    <a href="<?php echo str_replace('&', '&amp;', $oldCampaign); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_oldCampaign; ?></a>
+    <a onclick="bookmark(document.location, '<?php echo addslashes($title); ?>');" style="background-image: url('catalog/view/theme/default/image/bookmark.png');"><?php echo $text_bookmark; ?></a>
+    <a href="<?php echo str_replace('&', '&amp;', $contact); ?>" style="background-image: url('catalog/view/theme/default/image/contact.png');"><?php echo $text_contact; ?></a>
+    <a href="<?php echo str_replace('&', '&amp;', $sitemap); ?>" style="background-image: url('catalog/view/theme/default/image/sitemap.png');"><?php echo $text_sitemap; ?></a>
+    </div>
     <div class="div4"><a href="<?php echo str_replace('&', '&amp;', $home); ?>" id="tab_home"><?php echo $text_home; ?></a>
       <?php if (!$logged) { ?>
       <a href="<?php echo str_replace('&', '&amp;', $login); ?>" id="tab_login"><?php echo $text_login; ?></a>

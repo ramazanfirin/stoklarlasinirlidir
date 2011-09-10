@@ -4,7 +4,7 @@
     <div class="left"></div>
     <div class="right"></div>
     <div class="center">
-      <h1><?php echo $heading_title; echo $next_week_end_date;echo "  ";echo $next_week_start_date; echo $tempString;?></h1>
+      <h1><?php echo $heading_title;?></h1>
     </div>
   </div>
   <div class="middle">
@@ -22,8 +22,9 @@
       </div>
       <div class="div2"><?php echo $text_sort; ?></div>
     </div>
-    <?php echo  "BUgün:"; echo $tempString;?><br>
-    <?php echo $next_week_start_date; echo "---"; echo $next_week_end_date; echo " tarihleri arasındaki kampanyalar";?>
+   
+    <?php echo  "Eski Kampanyalar:"; ?><br>
+   
     <table class="list">
       <?php for ($i = 0; $i < sizeof($products); $i = $i + 4) { ?>
       <tr>

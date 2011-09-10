@@ -51,7 +51,7 @@ p {
 #header .div3 {
 	float: right;
 	padding-top: 7px;
-	height: 38px;
+	height: 25px;
 }
 #header .div3 a {
 	margin-left: 15px;
@@ -136,6 +136,8 @@ p {
 #header .div7 {
 	float: right;
 	padding-top: 2px;
+	height : 30px;
+	padding-right : 16px
 }
 #header .div8 {
 	float: left; margin-top: 6px;

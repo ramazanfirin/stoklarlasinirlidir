@@ -70,7 +70,7 @@ class ControllerProductOldCampaign extends Controller {
 			
        		$this->data['products'] = array();
 				
-			$results = $this->model_catalog_product->getNextWeekCampaigns();
+			$results = $this->model_catalog_product->getOldCampaigns();
         		
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -201,8 +201,8 @@ class ControllerProductOldCampaign extends Controller {
 			$this->data['sort'] = $sort;
 			$this->data['order'] = $order;
 
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/nextWeekCampaign.tpl')) {
-				$this->template = $this->config->get('config_template') . '/template/product/nextWeekCampaign.tpl';
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/oldCampaign.tpl')) {
+				$this->template = $this->config->get('config_template') . '/template/product/oldCampaign.tpl';
 			} else {
 				$this->template = 'default/template/product/special.tpl';
 			}

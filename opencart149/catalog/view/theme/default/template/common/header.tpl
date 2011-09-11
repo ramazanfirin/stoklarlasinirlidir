@@ -60,9 +60,6 @@ function bookmark(url, title) {
       <?php } ?>
     </div>
     <div class="div3">
-    <a href="<?php echo str_replace('&', '&amp;', $special); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_special; ?></a>
-    <a href="<?php echo str_replace('&', '&amp;', $nextWeekCampaign); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_nextWeekCampaign; ?></a>
-    <a href="<?php echo str_replace('&', '&amp;', $oldCampaign); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_oldCampaign; ?></a>
     <a onclick="bookmark(document.location, '<?php echo addslashes($title); ?>');" style="background-image: url('catalog/view/theme/default/image/bookmark.png');"><?php echo $text_bookmark; ?></a>
     <a href="<?php echo str_replace('&', '&amp;', $contact); ?>" style="background-image: url('catalog/view/theme/default/image/contact.png');"><?php echo $text_contact; ?></a>
     <a href="<?php echo str_replace('&', '&amp;', $sitemap); ?>" style="background-image: url('catalog/view/theme/default/image/sitemap.png');"><?php echo $text_sitemap; ?></a>
@@ -111,8 +108,22 @@ function bookmark(url, title) {
           </div>
         </form>
         <?php } ?>
-     
-     <div id="search">
+      </div>
+   
+    <div class="div4"><a href="<?php echo str_replace('&', '&amp;', $home); ?>" id="tab_home"><?php echo $text_home; ?></a>
+      <?php if (!$logged) { ?>
+      <a href="<?php echo str_replace('&', '&amp;', $login); ?>" id="tab_login"><?php echo $text_login; ?></a>
+      <?php } else { ?>
+      <a href="<?php echo str_replace('&', '&amp;', $logout); ?>" id="tab_logout"><?php echo $text_logout; ?></a>
+      <?php } ?>
+      <a href="<?php echo str_replace('&', '&amp;', $account); ?>" id="tab_account"><?php echo $text_account; ?></a><a href="<?php echo str_replace('&', '&amp;', $cart); ?>" id="tab_cart"><?php echo $text_cart; ?></a><a href="<?php echo str_replace('&', '&amp;', $checkout); ?>" id="tab_checkout"><?php echo $text_checkout; ?></a></div>
+    
+    <div class="div5">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">
+        <div id="search">
+          <div class="div8"><?php echo $entry_search; ?>&nbsp;</div>
           <div class="div9">
             <?php if ($keyword) { ?>
             <input type="text" value="<?php echo $keyword; ?>" id="filter_keyword" />
@@ -130,27 +141,8 @@ function bookmark(url, title) {
               <?php } ?>
             </select>
           </div>
-          <div class="div10">&nbsp;&nbsp;<a onclick="moduleSearch();" class="button"><span><?php echo $button_go; ?></span></a> 
-          <a href="<?php echo str_replace('&', '&amp;', $advanced); ?>"></a></div>
+          <div class="div10">&nbsp;&nbsp;<a onclick="moduleSearch();" class="button"><span><?php echo $button_go; ?></span></a> <a href="<?php echo str_replace('&', '&amp;', $advanced); ?>"><?php echo $text_advanced; ?></a></div>
         </div>
-      </div>
-   
-    
-     
-    
-    <div class="div4"><a href="<?php echo str_replace('&', '&amp;', $home); ?>" id="tab_home"><?php echo $text_home; ?></a>
-      <?php if (!$logged) { ?>
-      <a href="<?php echo str_replace('&', '&amp;', $login); ?>" id="tab_login"><?php echo $text_login; ?></a>
-      <?php } else { ?>
-      <a href="<?php echo str_replace('&', '&amp;', $logout); ?>" id="tab_logout"><?php echo $text_logout; ?></a>
-      <?php } ?>
-      <a href="<?php echo str_replace('&', '&amp;', $account); ?>" id="tab_account"><?php echo $text_account; ?></a><a href="<?php echo str_replace('&', '&amp;', $cart); ?>" id="tab_cart"><?php echo $text_cart; ?></a><a href="<?php echo str_replace('&', '&amp;', $checkout); ?>" id="tab_checkout"><?php echo $text_checkout; ?></a></div>
-    
-    <div class="div5">
-      <div class="left"></div>
-      <div class="right"></div>
-      <div class="center">
-        
       </div>
     </div>
   </div>
@@ -161,12 +153,18 @@ function bookmark(url, title) {
 	  <?php if (isset($common_error)) { ?>
 	  <div class="warning"><?php echo $common_error; ?></div>
 	  <?php } ?>
+      <!-- 
       <div id="breadcrumb">
         <?php foreach ($breadcrumbs as $breadcrumb) { ?>
         <?php echo $breadcrumb['separator']; ?><a href="<?php echo str_replace('&', '&amp;', $breadcrumb['href']); ?>"><?php echo $breadcrumb['text']; ?></a>
         <?php } ?>
       </div>
-      
+       -->
+     <div class="div3" align="center" style="float: none;">
+       <a href="<?php echo str_replace('&', '&amp;', $special); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_special; ?></a>
+    <a href="<?php echo str_replace('&', '&amp;', $nextWeekCampaign); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_nextWeekCampaign; ?></a>
+    <a href="<?php echo str_replace('&', '&amp;', $oldCampaign); ?>" style="background-image: url('catalog/view/theme/default/image/special.png');"><?php echo $text_oldCampaign; ?></a>
+    </div>
           </div>
   </div>
 </div>

@@ -653,31 +653,47 @@ AND ps.product_id NOT IN
 	public function getTempString() {
 		
 		$currentDate = date("Y-m-d");// current date
-		$day_of_week = strftime("%w", strtotime(date("Y-m-d")))-1;
-		$current_week_start_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
-		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +6 day");
+		$day_of_week = strftime("%w", strtotime(date("Y-m-d")));
+		if($day_of_week=="0")
+		   $day_of_week = 7;
+		$temp_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
+		$current_week_start_date = strtotime(date("Y-m-d", $temp_date)." +1 day");
+		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
 		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
 		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
 		
-		return $day_of_week;
+		$result =$day_of_week." ".date("Y-m-d",$temp_date)." ". date("Y-m-d",$current_week_start_date)." ".date("Y-m-d",$week_end_date);
+		
+		//date_default_timezone_set('Europe/Istanbul');
+		//return date("Y-m-d",$current_week_start_date);
+		//return date("Y-m-d",$week_end_date);
+		//return date("Y-m-d",$next_week_start_date);
+		//return date("Y-m-d",$next_week_end_date);
+		//return $day_of_week;
+		return $result;
 	}
 	
 	public function getNextWeekStartDate() {
 		$currentDate = date("Y-m-d");// current date
-		$day_of_week = strftime("%w", strtotime(date("Y-m-d")))-1;
-		$current_week_start_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
-		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +6 day");
+		$day_of_week = strftime("%w", strtotime(date("Y-m-d")));
+		if($day_of_week=="0")
+		   $day_of_week = 7;
+		$temp_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
+		$current_week_start_date = strtotime(date("Y-m-d", $temp_date)." +1 day");
+		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
 		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
 		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
-		
 		return date('Y-m-d',$next_week_start_date);
 	}
 	
 	public function getNextWeekEndDate() {
 		$currentDate = date("Y-m-d");// current date
-		$day_of_week = strftime("%w", strtotime(date("Y-m-d")))-1;
-		$current_week_start_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
-		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +6 day");
+		$day_of_week = strftime("%w", strtotime(date("Y-m-d")));
+		if($day_of_week=="0")
+		   $day_of_week = 7;
+		$temp_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
+		$current_week_start_date = strtotime(date("Y-m-d", $temp_date)." +1 day");
+		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
 		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
 		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
 		

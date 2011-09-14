@@ -25,21 +25,47 @@
    
     <?php echo  "Eski Kampanyalar:"; ?><br>
    
-   <div class="product-list">
+   <table id="productList" RULES=GROUPS frame="void">
+    
+    <thead>  
+            <tr>  
+                <th ></th>
+                <th align="center">Ürün İsmi</th>
+                <th align="center">Başlangıç Tarihi</th>
+                <th align="center">Bitiş Tarihi</th>        
+                <th align="center">Fiyat</th>  
+            </tr>  
+        </thead>  
+    
+  
+    
+    <tbody>  
+             
+        
+    
+    
     <?php foreach ($products as $product) { ?>
-    <div>
-      <?php if ($product['thumb']) { ?>
-      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+    <tr align="left"> 
+       <td>  
+    <?php if ($product['thumb']) { ?>
+     <img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" />
+      
       <?php } ?>
-      <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-      <div class="description"><?php echo $product['model']; ?></div>
+       </td>
+      <td>
+      <?php echo $product['name']; ?>
+      </td> 
+       <td width="150" align="center">
+       <?php echo $product['startDate']; ?>
+      </td>
+       <td width="100" align="center">
+       <?php echo $product['endDate']; ?>
+      </td>
+      <td align="right">
       <?php if ($product['price']) { ?>
-      <div class="price">
-        <?php if (!$product['special']) { ?>
-        <?php echo $product['price']; ?>
-        <?php } else { ?>
-        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-        <?php } ?>
+         <?php if ($product['special']) { ?>
+                 <?php echo $product['price']; ?>
+        <?php } else {} ?>
         <!-- 
         <?php if ($product['tax']) { ?>
          -->
@@ -49,15 +75,15 @@
         <?php } ?>
         -->
         
-      </div>
-      <?php } ?>
-      <?php if ($product['rating']) { ?>
-      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+      
       <?php } ?>
       
-    </div>
+      
+   
     <?php } ?>
-  </div>
+    </td>
+    </tbody> 
+  </table>
    
    
    

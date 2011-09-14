@@ -611,7 +611,7 @@ AND ps.product_id NOT IN
 			
 	}	
 	
-	public function getOldCampaigns() {
+	public function getOldCampaigns($start = 0, $limit = 100) {
 		if ($this->customer->isLogged()) {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
@@ -632,7 +632,7 @@ AND ps.product_id NOT IN
   AND pd2.customer_group_id = ".$customer_group_id." 
   AND pd2.quantity = '1' 
   AND (pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) 
-  AND (pd2.date_end = '0000-00-00' OR pd2.date_end < NOW()));";
+  AND (pd2.date_end = '0000-00-00' OR pd2.date_end < NOW())) ORDER BY ps.date_start LIMIT " . (int)$start . "," . (int)$limit;
 		
 		$sort_data = array(
 			'pd.name',
@@ -649,6 +649,33 @@ AND ps.product_id NOT IN
 			
 	}	
 	
+	
+public function geOldCampaignCount() {
+if ($this->customer->isLogged()) {
+			$customer_group_id = $this->customer->getCustomerGroupId();
+		} else {
+			$customer_group_id = $this->config->get('config_customer_group_id');
+		}
+	
+	$sql="SELECT count(*) as total FROM product p 
+LEFT JOIN product_to_store p2s ON (p.product_id = p2s.product_id) 
+LEFT JOIN product_special ps ON (p.product_id = ps.product_id)
+LEFT JOIN manufacturer pm ON (p.manufacturer_id = pm.manufacturer_id) 
+WHERE p.status = '1' 
+AND p.date_available <= NOW() 
+AND (ps.date_start = '0000-00-00' OR ps.date_start < NOW()) 
+AND (ps.date_end = '0000-00-00' OR ps.date_end < NOW())
+AND ps.product_id NOT IN 
+(SELECT pd2.product_id FROM product_discount pd2 
+  WHERE p.product_id = pd2.product_id 
+  AND pd2.customer_group_id = ".$customer_group_id." 
+  AND pd2.quantity = '1' 
+  AND (pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) 
+  AND (pd2.date_end = '0000-00-00' OR pd2.date_end < NOW())) ";		
+		
+		$query = $this->db->query($sql);
+		return $query->row['total'];
+	}
 	
 	public function getTempString() {
 		
@@ -670,7 +697,12 @@ AND ps.product_id NOT IN
 		//return date("Y-m-d",$next_week_start_date);
 		//return date("Y-m-d",$next_week_end_date);
 		//return $day_of_week;
-		return $result;
+		
+		
+		
+		
+		//return $this->getReviewsByProductId(51,5,20);
+		return $this->geOldCampaignSql(51); 
 	}
 	
 	public function getNextWeekStartDate() {
@@ -698,6 +730,31 @@ AND ps.product_id NOT IN
 		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
 		
 		return date('Y-m-d',$next_week_end_date);
+	}
+	
+     public function getReviewsByProductId($product_id, $start = 0, $limit = 20) {
+		$sql="SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY r.date_added DESC LIMIT " . (int)$start . "," . (int)$limit;
+		
+		return $sql;
+	}
+	
+	public function geOldCampaignSql($product_id, $start = 5, $limit = 2) {
+		$sql="SELECT count(*) ps.product_id,p.model,p.image,p.price,ps.price as special,p. tax_class_id,ps.price,ps.date_start,ps.date_end,pm.name FROM product p 
+LEFT JOIN product_to_store p2s ON (p.product_id = p2s.product_id) 
+LEFT JOIN product_special ps ON (p.product_id = ps.product_id)
+LEFT JOIN manufacturer pm ON (p.manufacturer_id = pm.manufacturer_id) 
+WHERE p.status = '1' 
+AND p.date_available <= NOW() 
+AND (ps.date_start = '0000-00-00' OR ps.date_start < NOW()) 
+AND (ps.date_end = '0000-00-00' OR ps.date_end < NOW())
+AND ps.product_id NOT IN 
+(SELECT pd2.product_id FROM product_discount pd2 
+  WHERE p.product_id = pd2.product_id 
+  AND pd2.customer_group_id = ".$customer_group_id." 
+  AND pd2.quantity = '1' 
+  AND (pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) 
+  AND (pd2.date_end = '0000-00-00' OR pd2.date_end < NOW())) LIMIT " . (int)$start . "," . (int)$limit;		
+		return $sql;
 	}
 	
 }

@@ -26,6 +26,12 @@ class ControllerProductOldCampaign extends Controller {
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}	
+		
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
 			
    		$this->document->breadcrumbs[] = array(
        		'href'      => HTTP_SERVER . 'index.php?route=product/special' . $url,
@@ -69,8 +75,10 @@ class ControllerProductOldCampaign extends Controller {
 			$this->data['button_add_to_cart'] = $this->language->get('button_add_to_cart');
 			
        		$this->data['products'] = array();
-				
-			$results = $this->model_catalog_product->getOldCampaigns();
+
+       		$page_size_limit =10;
+			$results = $this->model_catalog_product->getOldCampaigns(($page - 1) * $page_size_limit,$page_size_limit);
+			$product_total=$this->model_catalog_product->geOldCampaignCount();
         		
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -98,12 +106,14 @@ class ControllerProductOldCampaign extends Controller {
 					'model'   => $result['model'],
 					'rating'  => $rating,
 					'stars'   => sprintf($this->language->get('text_stars'), $rating),
-           			'thumb'   => $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
+           			'thumb'   => $this->model_tool_image->resize($image, 35, 35),
            			'price'   => $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))),
 					'options' => $options,
            			'special' => $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'))),
 					'href'    => $this->model_tool_seo_url->rewrite(HTTP_SERVER . 'index.php?route=product/product' . $url . '&product_id=' . $result['product_id']),
-					'add'	  => $add
+					'add'	  => $add,
+				    'startDate'	  => $result['date_start'],
+				    'endDate'	  => $result['date_end'] 
        			);
         	}
 
@@ -192,9 +202,9 @@ class ControllerProductOldCampaign extends Controller {
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
 			$pagination->page = $page;
-			$pagination->limit = $this->config->get('config_catalog_limit');
+			$pagination->limit = $page_size_limit;
 			$pagination->text = $this->language->get('text_pagination');
-			$pagination->url = HTTP_SERVER . 'index.php?route=product/special' . $url . '&page={page}';
+			$pagination->url = HTTP_SERVER . 'index.php?route=product/oldCampaign' . $url . '&page={page}';
 				
 			$this->data['pagination'] = $pagination->render();
 				

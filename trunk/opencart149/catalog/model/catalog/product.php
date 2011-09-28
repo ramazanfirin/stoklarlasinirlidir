@@ -696,13 +696,13 @@ AND ps.product_id NOT IN
 		//return date("Y-m-d",$week_end_date);
 		//return date("Y-m-d",$next_week_start_date);
 		//return date("Y-m-d",$next_week_end_date);
-		//return $day_of_week;
+		return $day_of_week;
 		
 		
 		
 		
 		//return $this->getReviewsByProductId(51,5,20);
-		return $this->geOldCampaignSql(51); 
+		//return $this->geOldCampaignSql(51); 
 	}
 	
 	public function getNextWeekStartDate() {

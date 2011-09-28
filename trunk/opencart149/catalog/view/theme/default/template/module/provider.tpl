@@ -4,7 +4,7 @@
 		function(){
 			$('ul#brands_slide').innerfade({
 				speed: 1000,
-				timeout: 7000,
+				timeout: 9000,
 				type: 'random',
 				containerheight: '100px'
 			});

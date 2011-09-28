@@ -13,7 +13,9 @@ class ControllerModuleManufacturer extends Controller {
 		}
 		
 		$this->load->model('catalog/manufacturer');
-		$this->load->model('tool/seo_url'); 
+		$this->load->model('tool/seo_url');
+		//Marka Logolari
+		$this->load->model('tool/image'); 
 		 
 		$this->data['manufacturers'] = array();
 		
@@ -23,6 +25,8 @@ class ControllerModuleManufacturer extends Controller {
 			$this->data['manufacturers'][] = array(
 				'manufacturer_id' => $result['manufacturer_id'],
 				'name'            => $result['name'],
+				//Marka logoları resim boyutu
+				'preview'         => $this->model_tool_image->resize($result['image'], 150, 100),
 				'href'            => $this->model_tool_seo_url->rewrite(HTTP_SERVER . 'index.php?route=product/manufacturer&manufacturer_id=' . $result['manufacturer_id'])
 			);
 		}

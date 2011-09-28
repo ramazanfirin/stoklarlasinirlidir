@@ -52,7 +52,7 @@
       
       <?php } ?>
        </td>
-      <td>
+      <td width="200">
       <?php echo $product['name']; ?>
       </td> 
        <td width="150" align="center">

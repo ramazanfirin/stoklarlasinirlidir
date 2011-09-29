@@ -173,6 +173,21 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 		
+		
+		if (!$this->customer->isLogged()) {
+   $this->data['text_greeting'] = $this->language->get('text_greeting');
+} else {
+   $this->load->model('account/customer');
+   $customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
+   $this->data['text_greeting'] = sprintf($this->language->get('text_logged'), $customer_info['firstname'].' '.$customer_info['lastname']);
+}
+$this->data['text_create'] = $this->language->get('text_create');
+$this->data['text_account'] = $this->language->get('text_account');
+
+$this->data['create'] = HTTPS_SERVER . 'index.php?route=account/login';
+$this->data['account'] = HTTPS_SERVER . 'index.php?route=account/account';
+		
+		
 		$this->id = 'header';
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {

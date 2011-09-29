@@ -654,3 +654,8 @@ p {
 	display: block;
 	background: url('../image/add.png') left 60% no-repeat;
 }
+#header .welcome {
+   clear: both;
+   margin: 10px 0px 10px 0px;
+   text-align: right;
+}

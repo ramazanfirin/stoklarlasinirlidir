@@ -110,6 +110,15 @@ function bookmark(url, title) {
         <?php } ?>
       </div>
    
+<div class="welcome">
+  <?php echo $text_greeting; ?>
+  <?php if (!$logged) { ?>
+    [ <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a> ] [ <a href="<?php echo $create; ?>"><?php echo $text_create; ?></a> ]
+  <?php } else { ?>
+    [ <a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a> ] [ <a href="<?php echo $account; ?>"><?php echo $text_account; ?></a> ]
+  <?php } ?>
+</div>
+   
     <div class="div4"><a href="<?php echo str_replace('&', '&amp;', $home); ?>" id="tab_home"><?php echo $text_home; ?></a>
       <?php if (!$logged) { ?>
       <a href="<?php echo str_replace('&', '&amp;', $login); ?>" id="tab_login"><?php echo $text_login; ?></a>

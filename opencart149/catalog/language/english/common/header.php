@@ -17,4 +17,9 @@ $_['text_category'] = 'All Categories';
 
 // Entry
 $_['entry_search']   = 'Search:';
+
+$_['text_greeting'] = 'Welcome, <strong>Guest</strong>';
+$_['text_logged']   = 'Welcome back, <strong>%s</strong>';
+$_['text_create']   = 'Register';
+$_['text_account']  = 'Account';
 ?>

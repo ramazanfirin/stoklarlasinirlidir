@@ -21,4 +21,9 @@ $_['text_category'] = 'Tüm Kategoriler';
 
 // Entry
 $_['entry_search']   = 'Arama:';
+
+$_['text_greeting'] = 'Hoşgeldiniz Sayın:, <strong>Misafir</strong>';
+$_['text_logged']   = 'Sayın:, <strong>%s</strong>&nbsp;Hoşgeldiniz';
+$_['text_create']   = 'Kayıt Olun';
+$_['text_account']  = 'Hesabım';
 ?>

@@ -1,3 +1,26 @@
+
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.4.1.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.lwtCountdown-1.0.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/misc.js"></script>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/main.css" />
+
+
+<script language="javascript" type="text/javascript">
+			jQuery(document).ready(function() {
+				$('#countdown_dashboard').countDown({
+					targetDate: {
+						'day': 		'1',
+						'month': 	'1',
+						'year': 	'2012',
+						'hour': 	'3',
+						'min': 		'3',
+						'sec': 		'3'
+					}
+				});
+				
+				
+			});
+		</script>
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content">
   <div class="top">
@@ -103,7 +126,8 @@
                 <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
                 <input type="hidden" name="redirect" value="<?php echo str_replace('&', '&amp;', $redirect); ?>" />                
               </div>
-              <!-- AddThis Button BEGIN -->
+           
+           <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_preferred_1"></a>
 <a class="addthis_button_preferred_2"></a>
@@ -114,12 +138,56 @@
 </div>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e82d97a69fb83ca"></script>
 <!-- AddThis Button END -->
-              
+           
             </form>
             <?php } ?></td>
         </tr>
-      </table>
+         </table>
     </div>
+    
+     <div id="container">
+ <center>
+		<!-- Countdown dashboard start -->
+		<div id="countdown_dashboard">
+			
+			<div class="temp">
+				
+			</div>
+			
+			<div class="dash weeks_dash">
+				<span class="dash_title">Hafta</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash days_dash">
+				<span class="dash_title">Gün</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash hours_dash">
+				<span class="dash_title">Saat</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash minutes_dash">
+				<span class="dash_title">Dakika</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash seconds_dash">
+				<span class="dash_title">Saniye</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+		</div>
+		 </center>
+    
+    
     <div class="tabs">
       <a tab="#tab_description"><?php echo $tab_description; ?></a>
       <a tab="#tab_image"><?php echo $tab_image; ?>  (<?php echo count($images); ?>)</a>

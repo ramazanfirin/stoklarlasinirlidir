@@ -15,4 +15,5 @@ $_['text_address']       = 'Adres defterlerini değiştirin';
 $_['text_history']       = 'Sipariş geçmişimi göster';
 $_['text_download']      = 'İndirebilir Ürünler';
 $_['text_newsletter']    = 'Yeni ürünler habercisine abone ol / aboneliği kaldır.';
+$_['text_customer_support']    = '1:1 Müşteri Hizmetleri';
 ?>

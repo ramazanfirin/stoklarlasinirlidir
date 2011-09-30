@@ -67,7 +67,9 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_length_class'] = $this->language->get('text_length_class');
 		$this->data['text_opencart'] = $this->language->get('text_opencart');
       	$this->data['text_zone'] = $this->language->get('text_zone');
-		
+		// Module: Customer Support
+		$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+		// Module: Customer Support
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
 			
@@ -127,6 +129,9 @@ class ControllerCommonHeader extends Controller {
 			$this->data['weight_class'] = HTTPS_SERVER . 'index.php?route=localisation/weight_class&token=' . $this->session->data['token'];
 			$this->data['length_class'] = HTTPS_SERVER . 'index.php?route=localisation/length_class&token=' . $this->session->data['token'];
 			$this->data['zone'] = HTTPS_SERVER . 'index.php?route=localisation/zone&token=' . $this->session->data['token'];
+			// Module: Customer Support
+			$this->data['customer_support'] = HTTPS_SERVER . 'index.php?route=catalog/customer_support&token=' . $this->session->data['token'];
+			// Module: Customer Support
 		}
 		
 		$this->id       = 'header';

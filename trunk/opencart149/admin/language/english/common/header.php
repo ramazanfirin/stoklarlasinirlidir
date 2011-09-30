@@ -54,4 +54,6 @@ $_['text_user_group']        = 'User Groups';
 $_['text_weight_class']      = 'Weight Classes';
 $_['text_length_class']      = 'Length Classes';
 $_['text_zone']              = 'Zones';
+// Module: Customer Support
+$_['text_customer_support']  = '1:1 Customer Support';
 ?>

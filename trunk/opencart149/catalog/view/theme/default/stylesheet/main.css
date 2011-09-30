@@ -1,6 +1,6 @@
 #container_countdown {
-	margin: 100px auto;
-	width: 700px;
+	
+	width: 500px;
 	color: #555;
 }
 
@@ -9,19 +9,27 @@
 }
 
 .dash {
-	width: 110px;
-	height: 114px;
+	width: 60px;
+	height: 70px;
 	background: transparent url('../image/dash2.png') 0 0 no-repeat;
 	float: left;
 	margin-left: 20px;
 	position: relative;
 }
 
+.temp {
+	
+	height: 70px;
+	float: left;
+	margin-left: 40px;
+	position: relative;
+}
+
 .dash .digit {
-	font-size: 55pt;
+	font-size: 25pt;
 	font-weight: bold;
 	float: left;
-	width: 55px;
+	width: 27px;
 	text-align: center;
 	font-family: Times;
 	color: #555;

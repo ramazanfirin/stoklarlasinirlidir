@@ -74,6 +74,7 @@ $(document).ready(function(){
         <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
         <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>
         <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
+        <li><a href="<?php echo $customer_support; ?>"><?php echo $text_customer_support; ?></a></li>
       </ul>
     </li>
     <li id="extension"><a class="top"><?php echo $text_extension; ?></a>

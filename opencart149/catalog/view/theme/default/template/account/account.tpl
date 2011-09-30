@@ -26,6 +26,10 @@
     <ul>
       <li><a href="<?php echo str_replace('&', '&amp;', $newsletter); ?>"><?php echo $text_newsletter; ?></a></li>
     </ul>
+    <p><b><?php echo $text_customer_support; ?></b></p>
+    <ul>
+      <li><a href="<?php echo str_replace('&', '&amp;', $customer_support); ?>"><?php echo $text_customer_support; ?></a></li>
+    </ul>
   </div>
   <div class="bottom">
     <div class="left"></div>

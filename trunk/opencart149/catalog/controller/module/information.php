@@ -22,6 +22,14 @@ class ControllerModuleInformation extends Controller {
 
 		$this->data['contact'] = HTTP_SERVER . 'index.php?route=information/contact';
     	$this->data['sitemap'] = HTTP_SERVER . 'index.php?route=information/sitemap';
+    	//######################################
+	//	Module: Customer Support
+	//######################################
+	$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+	$this->data['customer_support'] = HTTPS_SERVER . 'index.php?route=account/customer_support';
+	//######################################
+	//	Module: Customer Support
+	//######################################
 		
 		$this->id = 'information';
 

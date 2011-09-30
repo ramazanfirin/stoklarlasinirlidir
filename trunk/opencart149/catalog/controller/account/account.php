@@ -51,7 +51,14 @@ class ControllerAccountAccount extends Controller {
     	$this->data['history'] = HTTPS_SERVER . 'index.php?route=account/history';
     	$this->data['download'] = HTTPS_SERVER . 'index.php?route=account/download';
 		$this->data['newsletter'] = HTTPS_SERVER . 'index.php?route=account/newsletter';
-		
+		//######################################
+	//	Module: Customer Support
+	//######################################
+	$this->data['text_customer_support'] = $this->language->get('text_customer_support');
+	$this->data['customer_support'] = HTTPS_SERVER . 'index.php?route=account/customer_support';
+	//######################################
+	//	Module: Customer Support
+	//######################################
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/account/account.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/account/account.tpl';
 		} else {

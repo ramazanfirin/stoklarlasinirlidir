@@ -13,4 +13,5 @@ $_['text_address']       = 'Modify your address book entries';
 $_['text_history']       = 'View your order history';
 $_['text_download']      = 'Downloads';
 $_['text_newsletter']    = 'Subscribe / unsubscribe to newsletter';
+$_['text_customer_support']    = '1:1 Customer Support';
 ?>

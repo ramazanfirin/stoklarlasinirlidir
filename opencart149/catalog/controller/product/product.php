@@ -204,6 +204,7 @@ class ControllerProductProduct extends Controller {
 			
 				if ($special) {
 					$this->data['special'] = $this->currency->format($this->tax->calculate($special, $product_info['tax_class_id'], $this->config->get('config_tax')));
+					$this->data['special_date_end'] = $this->model_catalog_product->getProductSpecialDates($this->request->get['product_id']);
 				} else {
 					$this->data['special'] = FALSE;
 				}

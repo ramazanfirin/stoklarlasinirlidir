@@ -190,6 +190,7 @@
 
 		</div>
 		 </center>
+    </div>
     
     
     <div class="tabs">

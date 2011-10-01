@@ -147,8 +147,10 @@
         </tr>
          </table>
     </div>
-    
+  
+  <?php if ($special) { ?>  
      <div id="container_countdown">
+     <center>Kampanya Bitimine kalan süre</center><br>
  <center>
          
        <!-- Countdown dashboard start -->
@@ -191,7 +193,7 @@
 		</div>
 		 </center>
     </div>
-    
+    <?php } ?>
     
     <div class="tabs">
       <a tab="#tab_description"><?php echo $tab_description; ?></a>

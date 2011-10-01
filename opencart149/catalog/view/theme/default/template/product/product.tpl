@@ -3,18 +3,21 @@
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery.lwtCountdown-1.0.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/misc.js"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/main.css" />
-
+ 
+       
+       
+		
 
 <script language="javascript" type="text/javascript">
 			jQuery(document).ready(function() {
 				$('#countdown_dashboard').countDown({
 					targetDate: {
-						'day': 		'1',
-						'month': 	'1',
-						'year': 	'2012',
-						'hour': 	'3',
-						'min': 		'3',
-						'sec': 		'3'
+						'day': 		<?php echo date("d", strtotime($special_date_end)); ?> ,
+						'month': 	 <?php echo date("m", strtotime($special_date_end)); ?>,
+						'year': 	 <?php echo date("Y", strtotime($special_date_end)); ?>  ,
+						'hour': 	'0',
+						'min': 		'0',
+						'sec': 		'0'
 					}
 				});
 				
@@ -145,9 +148,10 @@
          </table>
     </div>
     
-     <div id="container">
+     <div id="container_countdown">
  <center>
-		<!-- Countdown dashboard start -->
+         
+       <!-- Countdown dashboard start -->
 		<div id="countdown_dashboard">
 			
 			<div class="temp">

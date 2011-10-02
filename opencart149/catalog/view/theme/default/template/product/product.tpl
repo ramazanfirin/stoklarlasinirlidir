@@ -36,8 +36,19 @@
   <div class="middle">
     <div style="width: 100%; margin-bottom: 30px;">
       <table style="width: 100%; border-collapse: collapse;">
+        <!-- code start -->
+		 <div class="banner">
+		 <?php echo $promo_tags_on_product_top_right; ?>
+		 <?php echo $promo_tags_on_product_top_left; ?>
+		 <?php echo $promo_tags_on_product_bottom_left; ?>
+		 <?php echo $promo_tags_on_product_bottom_right; ?>
+		 
+		 <span style="width:70px;height:70px;top:2px;left:188px;background: url('image/data/tags/specialprice.png') no-repeat" class="promotags"></span>		 		 
+		 <span style="width:70px;height:70px;top:190px;left:0px;background: url('image/data/tags/sale.png') no-repeat" class="promotags"></span>		 
+		 <!-- code end -->
+        
         <tr>
-          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" style="margin-bottom: 3px;" /></a><br />
+          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" style="margin-bottom: 3px;" /></a><!-- code start --></div><!-- code end --><br />
             <span style="font-size: 11px;"><?php echo $text_enlarge; ?></span></td>
           <td style="padding-left: 15px; width: 296px; vertical-align: top;"><table width="100%">
               <?php if ($display_price) { ?>
@@ -74,7 +85,25 @@
                   <?php } ?></td>
               </tr>
 			  <?php } ?>
+            
+            <!-- code start --><?php echo $promo_tags; ?>
+			  <tr><td colspan="2">
+				  <div class="addthis_toolbox addthis_default_style">
+				  <a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4cb894fd274c4f84" class="addthis_button_compact">Share</a>
+				  <span class="addthis_separator">|</span>
+				  <a class="addthis_button_preferred_1"></a>
+				  <a class="addthis_button_preferred_2"></a>
+				  <a class="addthis_button_preferred_3"></a>
+				  <a class="addthis_button_preferred_4"></a>
+				  </div><br/>
+				<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cb894fd274c4f84"></script>
+			  </td></tr>
+			  <tr><td colspan="2">
+			  <div><iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo $this->model_tool_seo_url->rewrite(HTTP_SERVER . 'index.php?route=product/product&product_id='.$this->request->get['product_id']); ?>&amp;layout=standard&amp;show_faces=false&amp;width=280&amp;action=like&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:270px; height:35px;" allowTransparency="true"></iframe>
+			  </div></td></tr><!-- code end -->
+            
             </table>
+            
             <br />
             <?php if ($display_price) { ?>
             <form action="<?php echo str_replace('&', '&amp;', $action); ?>" method="post" enctype="multipart/form-data" id="product">

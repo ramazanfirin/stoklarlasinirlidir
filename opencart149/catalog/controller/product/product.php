@@ -79,6 +79,15 @@ class ControllerProductProduct extends Controller {
 			$product_id = 0;
 		}
 		
+		//code start
+		$promo_date = $this->model_catalog_product->getProduct($product_id);
+		if((strtotime(date('Y-m-d')) >= strtotime($promo_date['promo_date_start'])) && (strtotime(date('Y-m-d')) <= strtotime($promo_date['promo_date_end'])) || (($promo_date['promo_date_start'] == '0000-00-00') && ($promo_date['promo_date_end'] == '0000-00-00'))) {
+			$promo_on = TRUE;
+		} else {
+			$promo_on = FALSE;
+		}
+		//code end
+		
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 		
 		if ($product_info) {
@@ -205,6 +214,7 @@ class ControllerProductProduct extends Controller {
 				if ($special) {
 					$this->data['special'] = $this->currency->format($this->tax->calculate($special, $product_info['tax_class_id'], $this->config->get('config_tax')));
 					$this->data['special_date_end'] = $this->model_catalog_product->getProductSpecialDates($this->request->get['product_id']);
+					$discountRate = floor((($this->data['price']-$special)*100)/$this->data['price']);
 				} else {
 					$this->data['special'] = FALSE;
 				}
@@ -237,6 +247,59 @@ class ControllerProductProduct extends Controller {
 				$this->data['minimum'] = 1;
 			}
 			
+			
+			$promo = $this->model_catalog_product->getPromo($product_info['product_id'],$product_info['promo_banner']);
+					
+			if (!empty($promo['promo_text']) && $promo_on) {
+				if (!empty($promo['promo_link'])){
+					$promo_tags = '<tr><td><b>This Item Entitle:</b></td><td style="color: red; font-weight:bold;"><a href="' . $promo['promo_link'] . '" Title="Click Me">' . $promo['promo_text'] . '</a></td></tr>';
+					if (!empty($promo['pimage'])){
+						$promo_tags = $promo_tags . '<br /><tr><td colspan="2"><a href="' . $promo['promo_link'] . '" Title="Click Me"><img src="image/' . $promo['pimage'] . '" /></a></td></tr>';
+					}
+				} else {
+					$promo_tags = '<tr><td><b>This Item Entitle:</b></td><td style="color: red; font-weight:bold;">' . $promo['promo_text'] . '</td></tr>';
+					if (!empty($promo['pimage'])){
+						$promo_tags = $promo_tags . '<br /><tr><td colspan="2"><img src="image/' . $promo['pimage'] . '" /></td></tr>';
+					}
+				}
+			} else {
+				$promo_tags = '';
+			}
+			
+			if (!empty($promo['promo_text']) && $promo_on) {
+				$promo_tags_on_product_top_right = '<span class="promotags" style="width:70px;height:70px;top:2px;left:188px;background: url(\'' . 'image/' . $promo['image'] . '\') no-repeat"></span>';
+			} else {
+				$promo_tags_on_product_top_right = '';
+			}
+			
+			$promo_top_left = $this->model_catalog_product->getPromo($product_info['product_id'],$product_info['promo_banner_top_left']);
+			if (!empty($promo_top_left['promo_text']) && $promo_on) {
+				$promo_tags_on_product_top_left = '<span class="promotags" style="width:70px;height:70px;top:0px;left:0px;background: url(\'' . 'image/' . $promo_top_left['image'] . '\') no-repeat"></span>';
+			} else {
+				$promo_tags_on_product_top_left = '';
+			}
+			
+			$promo_bottom_left = $this->model_catalog_product->getPromo($product_info['product_id'],$product_info['promo_banner_bottom_left']);
+			if (!empty($promo_bottom_left['promo_text']) && $promo_on) {
+				$promo_tags_on_product_bottom_left = '<span class="promotags" style="width:70px;height:70px;top:190px;left:0px;background: url(\'' . 'image/' . $promo_bottom_left['image'] . '\') no-repeat"></span>';
+				
+				
+				$promo_tags_on_product_bottom_left = $promo_tags_on_product_bottom_left.'<span style="font-size: 1.5em;color:white;width:70px;height:70px;top:205px;left:10px;" class="promotags2">  <b>%'.$discountRate.'</b></span>';
+			
+			
+			
+			} else {
+				$promo_tags_on_product_bottom_left = '';
+			}
+			
+			$promo_bottom_right = $this->model_catalog_product->getPromo($product_info['product_id'],$product_info['promo_banner_bottom_right']);
+			if (!empty($promo_bottom_right['promo_text']) && $promo_on) {
+				$promo_tags_on_product_bottom_right = '<span class="promotags" style="width:70px;height:70px;top:190px;left:215px;background: url(\'' . 'image/' . $promo_bottom_right['image'] . '\') no-repeat"></span>';
+			} else {
+				$promo_tags_on_product_bottom_right = '';
+			}
+			//code end			
+			
 			if ($product_info['maximum']) {
 				$this->data['maximum'] = $product_info['maximum'];
 			} else {
@@ -248,6 +311,13 @@ class ControllerProductProduct extends Controller {
 			$this->data['manufacturers'] = $this->model_tool_seo_url->rewrite(HTTP_SERVER . 'index.php?route=product/manufacturer&manufacturer_id=' . $product_info['manufacturer_id']);
 			$this->data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 			$this->data['product_id'] = $this->request->get['product_id'];
+			//code start
+			$this->data['promo_tags'] = $promo_tags;
+			$this->data['promo_tags_on_product_top_right'] = $promo_tags_on_product_top_right;
+			$this->data['promo_tags_on_product_top_left'] = $promo_tags_on_product_top_left;
+			$this->data['promo_tags_on_product_bottom_left'] = $promo_tags_on_product_bottom_left;
+			$this->data['promo_tags_on_product_bottom_right'] = $promo_tags_on_product_bottom_right;
+			//code end
 			$this->data['average'] = $average;
 			
 			$this->data['options'] = array();

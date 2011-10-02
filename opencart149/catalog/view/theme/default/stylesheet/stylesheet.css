@@ -659,3 +659,39 @@ p {
    margin: 10px 0px 10px 0px;
    text-align: right;
 }
+/*code start - product label*/
+.banner {
+list-style : none;
+margin: 0;
+padding: 0;
+position: relative;
+}
+.banner img {
+background: #f3f3f3;
+border: solid 1px #ccc;
+padding: 3px;
+}
+.promotags {
+display: block;
+position: absolute;
+z-index: 1;
+}
+.promotags2 {
+display: block;
+position: absolute;
+z-index: 2;
+} 
+.discount {
+position: absolute;
+background: url('../image/discount_bgred.png') no-repeat;
+z-index: 1;
+}
+.percentage {
+text-align:center;
+font:bold 11px arial;
+color:#ffffff;
+padding-top:6px;
+line-height:12px;
+height:36px;
+}
+/*code end */

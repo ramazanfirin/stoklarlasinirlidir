@@ -676,33 +676,11 @@ AND ps.product_id NOT IN
 		$query = $this->db->query($sql);
 		return $query->row['total'];
 	}
-	
-	public function getTempString() {
-		
-		$currentDate = date("Y-m-d");// current date
-		$day_of_week = strftime("%w", strtotime(date("Y-m-d")));
-		if($day_of_week=="0")
-		   $day_of_week = 7;
-		$temp_date = strtotime(date("Y-m-d", strtotime($currentDate))." -$day_of_week day");
-		$current_week_start_date = strtotime(date("Y-m-d", $temp_date)." +1 day");
-		$week_end_date = strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
-		$next_week_start_date= strtotime(date("Y-m-d", $current_week_start_date) . " +1 week");
-		$next_week_end_date= strtotime(date("Y-m-d", $current_week_start_date) . " +2 week");
-		
-		$result =$day_of_week." ".date("Y-m-d",$temp_date)." ". date("Y-m-d",$current_week_start_date)." ".date("Y-m-d",$week_end_date);
-		
-		//date_default_timezone_set('Europe/Istanbul');
-		//return date("Y-m-d",$current_week_start_date);
-		//return date("Y-m-d",$week_end_date);
-		//return date("Y-m-d",$next_week_start_date);
-		//return date("Y-m-d",$next_week_end_date);
-		return $day_of_week;
-		
-		
-		
-		
-		//return $this->getReviewsByProductId(51,5,20);
-		//return $this->geOldCampaignSql(51); 
+	//code end
+		//code start
+	public function getPromo($product_id,$data) {
+		$query = $this->db->query("SELECT pt.promo_text, pt.promo_link, pt.image, pt.pimage FROM " . DB_PREFIX . "promo_tags pt, " . DB_PREFIX . "product p WHERE pt.promo_tags_id = '" . (int)$data . "' AND p.product_id = '" . (int)$product_id . "'");
+		return $query->row;	
 	}
 	
 	public function getNextWeekStartDate() {

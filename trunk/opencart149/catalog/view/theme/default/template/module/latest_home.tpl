@@ -9,11 +9,19 @@
 
 <div class="middle">
   <table class="list">
+  
   <?php for ($i = 0; $i < sizeof($products); $i = $i + 4) { ?>
     <tr>
       <?php for ($j = $i; $j < ($i + 4); $j++) { ?>
-      <td style="width: 25%;"><?php if (isset($products[$j])) { ?>
-      <a href="<?php echo str_replace('&', '&amp;', $products[$j]['href']); ?>"><img src="<?php echo $products[$j]['thumb']; ?>" title="<?php echo $products[$j]['name']; ?>" alt="<?php echo $products[$j]['name']; ?>" /></a><br />
+	  <td style="width: 25%;"><?php if (isset($products[$j])) { ?><!-- code start --><div class="banner"><!-- code end -->
+      <a href="<?php echo str_replace('&', '&amp;', $products[$j]['href']); ?>">
+	  <!-- code start -->
+	  <?php echo $products[$j]['promo_tags_top_right']; ?>
+	  <?php echo $products[$j]['promo_tags_top_left']; ?>
+	  <?php echo $products[$j]['promo_tags_bottom_left']; ?>
+	  <?php echo $products[$j]['promo_tags_bottom_right']; ?>
+	  <!-- code end -->
+	  <img src="<?php echo $products[$j]['thumb']; ?>" title="<?php echo $products[$j]['name']; ?>" alt="<?php echo $products[$j]['name']; ?>" /></a><!-- code start --></div><!-- code end -->
       <a href="<?php echo str_replace('&', '&amp;', $products[$j]['href']); ?>"><?php echo $products[$j]['name']; ?></a><br />
       <span style="color: #999; font-size: 11px;"><?php echo $products[$j]['model']; ?></span><br />
       <?php if ($display_price) { ?>
@@ -25,7 +33,7 @@
       <a class="button_add_small" href="<?php echo $products[$j]['add']; ?>" title="<?php echo $button_add_to_cart; ?>" >&nbsp;</a>
       <?php } ?>
       <br />
-      <?php if ($products[$j]['rating']) { ?>
+	  <?php if ($products[$j]['rating']) { ?>
       <img src="catalog/view/theme/default/image/stars_<?php echo $products[$j]['rating'] . '.png'; ?>" alt="<?php echo $products[$j]['stars']; ?>" />
       <?php } ?>
       <?php } ?></td>

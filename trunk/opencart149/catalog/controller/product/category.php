@@ -136,6 +136,14 @@ class ControllerProductCategory extends Controller {
 						$image = 'no_image.jpg';
 					}
 					
+					//code start
+					if((strtotime(date('Y-m-d')) >= strtotime($result['promo_date_start'])) && (strtotime(date('Y-m-d')) <= strtotime($result['promo_date_end'])) || (($result['promo_date_start'] == '0000-00-00') && ($result['promo_date_end'] == '0000-00-00'))) {
+						$promo_on = TRUE;
+					} else {
+						$promo_on = FALSE;
+					}
+					//code end
+					
 					if ($this->config->get('config_review')) {
 						$rating = $this->model_catalog_review->getAverageRating($result['product_id']);	
 					} else {
@@ -166,10 +174,47 @@ class ControllerProductCategory extends Controller {
 						$add = HTTPS_SERVER . 'index.php?route=checkout/cart&product_id=' . $result['product_id'];
 					}
 					
+					//code start
+					$promo = $this->model_catalog_product->getPromo($result['product_id'],$result['promo_banner']);
+			
+					if (!empty($promo['promo_text']) && $promo_on) {
+						$promo_tags_top_right = '<span class="promotags" style="width:100%;height:100%;background: url(\'' . 'image/' . $promo['image'] . '\') no-repeat;background-position:top right"></span>';
+					} else {
+						$promo_tags_top_right = '';
+					}
+					
+					$promo_top_left = $this->model_catalog_product->getPromo($result['product_id'],$result['promo_banner_top_left']);
+					if (!empty($promo_top_left['promo_text']) && $promo_on) {
+						$promo_tags_top_left = '<span class="promotags" style="width:100%;height:100%;background: url(\'' . 'image/' . $promo_top_left['image'] . '\') no-repeat;background-position:top left"></span>';
+					} else {
+						$promo_tags_top_left = '';
+					}
+					
+					$promo_bottom_left = $this->model_catalog_product->getPromo($result['product_id'],$result['promo_banner_bottom_left']);
+					if (!empty($promo_bottom_left['promo_text']) && $promo_on) {
+						$promo_tags_bottom_left = '<span class="promotags" style="width:100%;height:100%;background: url(\'' . 'image/' . $promo_bottom_left['image'] . '\') no-repeat;background-position:bottom left"></span>';
+					} else {
+						$promo_tags_bottom_left = '';
+					}
+					
+					$promo_bottom_right = $this->model_catalog_product->getPromo($result['product_id'],$result['promo_banner_bottom_right']);
+					if (!empty($promo_bottom_right['promo_text']) && $promo_on) {
+						$promo_tags_bottom_right = '<span class="promotags" style="width:100%;height:100%;background: url(\'' . 'image/' . $promo_bottom_right['image'] . '\') no-repeat;background-position:bottom right"></span>';
+					} else {
+						$promo_tags_bottom_right = '';
+					}
+					//code end
+					
 					$this->data['products'][] = array(
             			'name'    => $result['name'],
 						'model'   => $result['model'],
             			'rating'  => $rating,
+						//code start
+						'promo_tags_top_right'		=> $promo_tags_top_right,
+						'promo_tags_top_left'		=> $promo_tags_top_left,
+						'promo_tags_bottom_left'	=> $promo_tags_bottom_left,
+						'promo_tags_bottom_right'	=> $promo_tags_bottom_right,
+						//code end
 						'stars'   => sprintf($this->language->get('text_stars'), $rating),
 						'thumb'   => $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
             			'price'   => $price,

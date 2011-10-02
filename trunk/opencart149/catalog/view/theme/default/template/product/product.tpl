@@ -51,7 +51,9 @@
 		 <!-- code end -->
         
         <tr>
-          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" style="margin-bottom: 3px;" /></a>
+          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery">
+          <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" 
+          style="margin-bottom: 3px;border :1px solid #CCCCCC;background:none repeat scroll 0 0 #F3F3F3;padding:3px" /></a>
           <!-- code start --></div><!-- code end --><br />
             <span style="font-size: 11px;"><?php echo $text_enlarge; ?></span></td>
           <td style="padding-left: 15px; width: 296px; vertical-align: top;"><table width="100%">

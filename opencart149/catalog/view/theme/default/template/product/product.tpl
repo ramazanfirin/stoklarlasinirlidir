@@ -3,6 +3,9 @@
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery.lwtCountdown-1.0.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/misc.js"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/main.css" />
+
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jqzoom-core.js"></script>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/jquery.jqzoom.css" />
  
        
        
@@ -22,8 +25,25 @@
 				});
 				
 				
+				
 			});
 		</script>
+		
+	<script type="text/javascript">
+
+	jQuery(document).ready(function() {
+	$('.jqzoom').jqzoom({
+            zoomType: 'standard',
+            lens:true,
+            preloadImages: false,
+            alwaysOn:false
+        });
+	
+});
+
+
+</script>	
+		
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content">
   <div class="top">
@@ -51,9 +71,10 @@
 		 <!-- code end -->
         
         <tr>
-          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery">
-          <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" 
-          style="margin-bottom: 3px;border :1px solid #CCCCCC;background:none repeat scroll 0 0 #F3F3F3;padding:3px" /></a>
+          <td style="text-align: center; width: 250px; vertical-align: top;">
+          <a href="<?php echo $popup; ?>"  title="<?php echo $heading_title; ?>" class="jqzoom thickbox" rel="gallery">
+          <img src="<?php echo $thumb; ?>"  title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" 
+              style="margin-bottom: 3px;border :1px solid #CCCCCC;background:none repeat scroll 0 0 #F3F3F3;padding:3px" /></a>
           <!-- code start --></div><!-- code end --><br />
             <span style="font-size: 11px;"><?php echo $text_enlarge; ?></span></td>
           <td style="padding-left: 15px; width: 296px; vertical-align: top;"><table width="100%">

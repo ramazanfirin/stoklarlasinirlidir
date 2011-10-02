@@ -32,6 +32,7 @@ DD_belatedPNG.fix('img, #header .div3 a, #content .left, #content .right, .box .
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/thickbox/thickbox.css" />
 <script type="text/javascript" src="catalog/view/javascript/jquery/tab.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery.lwtCountdown-1.0.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jqzoom-core.js"></script>
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
 <?php } ?>

@@ -43,12 +43,16 @@
 		 <?php echo $promo_tags_on_product_bottom_left; ?>
 		 <?php echo $promo_tags_on_product_bottom_right; ?>
 		 
+		 <!-- 
 		 <span style="width:70px;height:70px;top:2px;left:188px;background: url('image/data/tags/specialprice.png') no-repeat" class="promotags"></span>		 		 
-		 <span style="width:70px;height:70px;top:190px;left:0px;background: url('image/data/tags/sale.png') no-repeat" class="promotags"></span>		 
+		 <span style="width:70px;height:70px;top:190px;left:0px;background: url('image/data/tags/indirimpatlangac.gif') no-repeat" class="promotags"></span>		 
+		   -->
+		
 		 <!-- code end -->
         
         <tr>
-          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" style="margin-bottom: 3px;" /></a><!-- code start --></div><!-- code end --><br />
+          <td style="text-align: center; width: 250px; vertical-align: top;"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" style="margin-bottom: 3px;" /></a>
+          <!-- code start --></div><!-- code end --><br />
             <span style="font-size: 11px;"><?php echo $text_enlarge; ?></span></td>
           <td style="padding-left: 15px; width: 296px; vertical-align: top;"><table width="100%">
               <?php if ($display_price) { ?>

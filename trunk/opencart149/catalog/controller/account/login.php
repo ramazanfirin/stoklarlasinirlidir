@@ -33,12 +33,11 @@ class ControllerAccountLogin extends Controller {
 
 				$this->tax->setZone($address['country_id'], $address['zone_id']);
 				
-				
-				if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], HTTP_SERVER) !== false || strpos($this->request->post['redirect'], HTTPS_SERVER) !== false)) { 
-					$this->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
-				} else {
-					$this->redirect(HTTPS_SERVER . 'index.php?route=account/account');
-				} 
+if (isset($this->request->post['redirect'])) {
+    $this->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
+} else {
+    $this->redirect(HTTPS_SERVER . 'index.php?route=common/home');
+}  
 			}
     	}  
 		
@@ -89,7 +88,7 @@ class ControllerAccountLogin extends Controller {
 		
 		$this->data['action'] = HTTPS_SERVER . 'index.php?route=account/login';
 
-    	if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], HTTP_SERVER) !== false || strpos($this->request->post['redirect'], HTTPS_SERVER) !== false)) {
+    	if (isset($this->request->post['redirect'])) {
 			$this->data['redirect'] = $this->request->post['redirect'];
 		} elseif (isset($this->session->data['redirect'])) {
       		$this->data['redirect'] = $this->session->data['redirect'];

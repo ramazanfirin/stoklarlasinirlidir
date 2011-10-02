@@ -674,12 +674,12 @@ padding: 3px;
 .promotags {
 display: block;
 position: absolute;
-z-index: 1;
+z-index: 6000;
 }
 .promotags2 {
 display: block;
 position: absolute;
-z-index: 2;
+z-index: 6001;
 } 
 .discount {
 position: absolute;

@@ -8,4 +8,5 @@ $_['heading_title'] = 'BİLGİLER';
 $_['text_contact']  = 'İletişim';
 $_['text_sitemap']  = 'Site Haritası';
 $_['text_customer_support'] = '1:1 Müşteri Hizmetleri';
+$_['text_tell_a_friend'] = 'Arkadaşına Tavsiye Et';
 ?>

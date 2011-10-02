@@ -30,7 +30,10 @@ class ControllerModuleInformation extends Controller {
 	//######################################
 	//	Module: Customer Support
 	//######################################
+	$this->data['text_tell_a_friend'] = $this->language->get('text_tell_a_friend');
+	$this->data['tell_a_friend'] = HTTP_SERVER . 'index.php?route=information/tellafriend';
 		
+	
 		$this->id = 'information';
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/information.tpl')) {

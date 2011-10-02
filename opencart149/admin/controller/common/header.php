@@ -45,6 +45,9 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_order_status'] = $this->language->get('text_order_status');
 		$this->data['text_payment'] = $this->language->get('text_payment');
 		$this->data['text_product'] = $this->language->get('text_product'); 
+		//code start
+		$this->data['text_tags'] = $this->language->get('text_tags'); 
+		//code end
 		$this->data['text_reports'] = $this->language->get('text_reports');
 		$this->data['text_report_purchased'] = $this->language->get('text_report_purchased');     		
 		$this->data['text_report_sale'] = $this->language->get('text_report_sale');
@@ -114,6 +117,9 @@ class ControllerCommonHeader extends Controller {
 			$this->data['order_status'] = HTTPS_SERVER . 'index.php?route=localisation/order_status&token=' . $this->session->data['token'];
 			$this->data['payment'] = HTTPS_SERVER . 'index.php?route=extension/payment&token=' . $this->session->data['token'];
 			$this->data['product'] = HTTPS_SERVER . 'index.php?route=catalog/product&token=' . $this->session->data['token'];
+			//code start
+			$this->data['tags'] = HTTPS_SERVER . 'index.php?route=catalog/promotags&token=' . $this->session->data['token'];
+			//code end
 			$this->data['report_purchased'] = HTTPS_SERVER . 'index.php?route=report/purchased&token=' . $this->session->data['token'];
 			$this->data['report_sale'] = HTTPS_SERVER . 'index.php?route=report/sale&token=' . $this->session->data['token'];
 			$this->data['report_viewed'] = HTTPS_SERVER . 'index.php?route=report/viewed&token=' . $this->session->data['token'];

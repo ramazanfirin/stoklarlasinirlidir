@@ -70,6 +70,9 @@ $(document).ready(function(){
       <ul>
         <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
         <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
+		<!--code start-->
+		<li><a href="<?php echo $tags; ?>"><?php echo $text_tags; ?></a></li>
+		<!--code end-->
         <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
         <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
         <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>

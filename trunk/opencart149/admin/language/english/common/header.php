@@ -34,6 +34,9 @@ $_['text_order_status']      = 'Order Statuses';
 $_['text_opencart']          = 'Homepage';
 $_['text_payment']           = 'Payments';
 $_['text_product']           = 'Products';
+//code start
+$_['text_tags']           	 = 'Promotional Tags';
+//code end
 $_['text_reports']           = 'Reports';
 $_['text_report_purchased']  = 'Products Purchased';
 $_['text_report_sale']       = 'Sales';

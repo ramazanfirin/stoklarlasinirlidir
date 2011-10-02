@@ -42,6 +42,10 @@ $_['entry_minimum']          = 'Minimum Quantity:<br/><span class="help">Force a
 $_['entry_maximum']          = 'Maximum Quantity:<br/><span class="help">Limit the maximum ordered amount (set to 0 for no limit)</span>';
 $_['entry_stock_status']     = 'Out Of Stock Status:<br/><span class="help">Status shown when a product is out of stock</span>';
 $_['entry_status']           = 'Status:';
+//code start
+$_['entry_promo_banner']     = 'Promotional Tags:<br/><span class="help">1st = Top-Right <br/> 2nd = Top-Left <br /> 3rd = Bottom-Left <br /> 4th = Bottom-Right</span>'; 
+$_['entry_promo_date']    	 = 'Promotional Date Start / Date End : <br/><span class="help">Set to 0000-00-00 for end less promotion. Set date to auto turn off promotion label.</span>'; 
+//code end
 $_['entry_tax_class']        = 'Tax Class:';
 $_['entry_cost']             = 'Cost:<br/><span class="help">The product cost used for profit reporting</span>';
 $_['entry_price']            = 'Price:';

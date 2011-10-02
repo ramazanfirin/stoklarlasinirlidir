@@ -678,6 +678,42 @@ class ControllerCatalogProduct extends Controller {
     	} else {
 			$this->data['shipping'] = 1;
 		}
+		
+		//code start
+		$this->data['promotags'] = $this->model_catalog_product->getPromoTags();
+
+    	if (isset($this->request->post['promo_banner'])) {
+      		$this->data['promo_banner'] = $this->request->post['promo_banner'];
+		} elseif (isset($product_info)) {
+			$this->data['promo_banner'] = $product_info['promo_banner'];
+		} else {
+      		$this->data['promo_banner'] = 0;
+    	}
+		
+		if (isset($this->request->post['promo_banner_top_left'])) {
+      		$this->data['promo_banner_top_left'] = $this->request->post['promo_banner_top_left'];
+		} elseif (isset($product_info)) {
+			$this->data['promo_banner_top_left'] = $product_info['promo_banner_top_left'];
+		} else {
+      		$this->data['promo_banner_top_left'] = 0;
+    	}
+		
+		if (isset($this->request->post['promo_banner_bottom_left'])) {
+      		$this->data['promo_banner_bottom_left'] = $this->request->post['promo_banner_bottom_left'];
+		} elseif (isset($product_info)) {
+			$this->data['promo_banner_bottom_left'] = $product_info['promo_banner_bottom_left'];
+		} else {
+      		$this->data['promo_banner_bottom_left'] = 0;
+    	}
+		
+		if (isset($this->request->post['promo_banner_bottom_right'])) {
+      		$this->data['promo_banner_bottom_right'] = $this->request->post['promo_banner_bottom_right'];
+		} elseif (isset($product_info)) {
+			$this->data['promo_banner_bottom_right'] = $product_info['promo_banner_bottom_right'];
+		} else {
+      		$this->data['promo_banner_bottom_right'] = 0;
+    	}
+		//code end
 
 		if (isset($this->request->post['date_available'])) {
        		$this->data['date_available'] = $this->request->post['date_available'];
@@ -746,6 +782,24 @@ class ControllerCatalogProduct extends Controller {
 		} else {
       		$this->data['price'] = '';
     	}
+		
+		//code start
+		if (isset($this->request->post['promo_date_start'])) {
+       		$this->data['promo_date_start'] = $this->request->post['promo_date_start'];
+		} elseif (isset($product_info)) {
+			$this->data['promo_date_start'] = $product_info['promo_date_start'];
+		} else {
+			$this->data['promo_date_start'] = '0000-00-00';
+		}
+		
+		if (isset($this->request->post['promo_date_end'])) {
+       		$this->data['promo_date_end'] = $this->request->post['promo_date_end'];
+		} elseif (isset($product_info)) {
+			$this->data['promo_date_end'] = $product_info['promo_date_end'];
+		} else {
+			$this->data['promo_date_end'] = '0000-00-00';
+		}
+		//code end	
 
 		if (isset($this->request->post['cost'])) {
       		$this->data['cost'] = $this->request->post['cost'];

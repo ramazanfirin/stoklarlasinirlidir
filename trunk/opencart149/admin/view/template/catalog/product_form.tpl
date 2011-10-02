@@ -77,7 +77,7 @@
             <td><?php echo $entry_cost; ?></td>
             <td><input type="text" name="cost" value="<?php echo $cost; ?>" /></td>
           </tr>
-          <tr>
+		  <tr>
             <td><?php echo $entry_tax_class; ?></td>
             <td><select name="tax_class_id">
                 <option value="0"><?php echo $text_none; ?></option>
@@ -126,6 +126,64 @@
                 <?php } ?>
               </select></td>
           </tr>
+		  <!--code start-->
+		   <tr>
+            <td><?php echo $entry_promo_banner; ?></td>
+            <td><select name="promo_banner" style="width:220px">
+                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                <?php foreach ($promotags as $promotag) { ?>
+				   <?php if ($promotag['promo_direction'] == '0') { ?> 
+					<?php if ($promotag['promo_tags_id'] == $promo_banner) { ?>
+						<option value="<?php echo $promotag['promo_tags_id']; ?>" selected="selected"><?php echo $promotag['promo_text']; ?></option>
+					<?php } else { ?>
+						<option value="<?php echo $promotag['promo_tags_id']; ?>"><?php echo $promotag['promo_text']; ?></option>
+					<?php } ?>
+					<?php } ?>
+                <?php } ?>
+              </select><br />
+			  <span><select name="promo_banner_top_left" style="width:220px">
+                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                <?php foreach ($promotags as $promotag) { ?>
+				   <?php if ($promotag['promo_direction'] == '1') { ?> 
+					 <?php if ($promotag['promo_tags_id'] == $promo_banner_top_left) { ?>
+						<option value="<?php echo $promotag['promo_tags_id']; ?>" selected="selected"><?php echo $promotag['promo_text']; ?></option>
+					 <?php } else { ?>
+						<option value="<?php echo $promotag['promo_tags_id']; ?>"><?php echo $promotag['promo_text']; ?></option>
+					 <?php } ?>
+					<?php } ?>
+                <?php } ?>
+              </select>
+			  </span><br />
+			  <span><select name="promo_banner_bottom_left" style="width:220px">
+                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                <?php foreach ($promotags as $promotag) { ?>
+				  <?php if ($promotag['promo_direction'] == '2') { ?> 
+					  <?php if ($promotag['promo_tags_id'] == $promo_banner_bottom_left) { ?>
+						  <option value="<?php echo $promotag['promo_tags_id']; ?>" selected="selected"><?php echo $promotag['promo_text']; ?></option>
+					<?php } else { ?>
+						  <option value="<?php echo $promotag['promo_tags_id']; ?>"><?php echo $promotag['promo_text']; ?></option>
+					  <?php } ?>
+                  <?php } ?>
+				<?php } ?>
+              </select></span><br />	
+			  <span><select name="promo_banner_bottom_right" style="width:220px">
+                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                <?php foreach ($promotags as $promotag) { ?>
+				  <?php if ($promotag['promo_direction'] == '3') { ?> 
+					  <?php if ($promotag['promo_tags_id'] == $promo_banner_bottom_right) { ?>
+						  <option value="<?php echo $promotag['promo_tags_id']; ?>" selected="selected"><?php echo $promotag['promo_text']; ?></option>
+					<?php } else { ?>
+						  <option value="<?php echo $promotag['promo_tags_id']; ?>"><?php echo $promotag['promo_text']; ?></option>
+					  <?php } ?>
+                  <?php } ?>
+				<?php } ?>
+              </select></span>			  			  
+			  </td>
+	      </tr>     
+		  <tr>
+		  <td><?php echo $entry_promo_date; ?></td><td><input type="text" name="promo_date_start" value="<?php echo $promo_date_start; ?>" size="12" class="date" /><?php echo " / "; ?><input type="text" name="promo_date_end" value="<?php echo $promo_date_end; ?>" size="12" class="date" /></td>
+		  </tr>
+		  <!--code end-->
           <tr>
             <td><?php echo $entry_shipping; ?></td>
             <td><?php if ($shipping) { ?>

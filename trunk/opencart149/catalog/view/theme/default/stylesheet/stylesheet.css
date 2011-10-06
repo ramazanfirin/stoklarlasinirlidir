@@ -694,4 +694,30 @@ padding-top:6px;
 line-height:12px;
 height:36px;
 }
+
+.tabs a{
+background:url("../image/tab_3.png") repeat-x scroll 0 0 #FFFFFF;
+border:1px solid #DDDDDD;
+color:#000000;
+display:block;
+float:left;
+font-size:11px; /* JPortal */
+font-weight:bold;
+margin-right:2px;
+padding:6px 15px 7px;
+position:relative;
+text-decoration:none;
+top:1px;
+z-index:1;
+
+}
+
+/* add this at the end of catalog/view/theme/default/stylesheet/stylesheet.css */
+
+.noavailmsg {
+    background: none repeat scroll 0 0 #4D7EB0;
+    color: #FFFFFF;
+    padding: 7px;
+    text-align: center;
+}
 /*code end */

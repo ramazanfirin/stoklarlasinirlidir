@@ -26,7 +26,6 @@
     <?php echo  "Eski Kampanyalar:"; ?><br>
    
    <table id="productList" RULES=GROUPS frame="void">
-    
     <thead>  
             <tr>  
                 <th ></th>
@@ -36,15 +35,8 @@
                 <th align="center">Fiyat</th>  
             </tr>  
         </thead>  
-    
-  
-    
-    <tbody>  
-             
-        
-    
-    
-    <?php foreach ($products as $product) { ?>
+   <tbody>  
+   <?php foreach ($products as $product) { ?>
     <tr align="left"> 
        <td>  
     <?php if ($product['thumb']) { ?>
@@ -74,26 +66,12 @@
         <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
         <?php } ?>
         -->
-        
-      
-      <?php } ?>
-      
-      
-   
-    <?php } ?>
+     <?php } ?>
+   <?php } ?>
     </td>
     </tbody> 
   </table>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-  <!--  
+ <!--  
    
     <table class="list">
       <?php for ($i = 0; $i < sizeof($products); $i = $i + 4) { ?>

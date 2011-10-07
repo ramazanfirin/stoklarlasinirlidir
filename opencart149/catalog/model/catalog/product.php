@@ -587,8 +587,10 @@ LEFT JOIN product_special ps ON (p.product_id = ps.product_id)
 LEFT JOIN manufacturer pm ON (p.manufacturer_id = pm.manufacturer_id) 
 WHERE p.status = '1' 
 AND p.date_available <= NOW() 
-AND ((ps.date_start = '0000-00-00' OR ps.date_start >= '".$this->getNextWeekStartDate()."')  
-AND (ps.date_end = '0000-00-00' OR ps.date_end <='".$this->getNextWeekEndDate()."' )) 
+AND (
+    (ps.date_start = '0000-00-00' OR ps.date_start <= '".$this->getNextWeekStartDate()."')  
+AND (ps.date_end = '0000-00-00' OR ps.date_end >='".$this->getNextWeekEndDate()."' )
+) 
 AND ps.product_id NOT IN 
 (SELECT pd2.product_id FROM product_discount pd2 
   WHERE p.product_id = pd2.product_id 

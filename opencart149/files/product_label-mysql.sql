@@ -1,0 +1,71 @@
+ALTER TABLE product ADD promo_banner int(5) NOT NULL DEFAULT '0';
+ALTER TABLE product ADD promo_banner_top_left int(5) NOT NULL DEFAULT '0';
+ALTER TABLE product ADD promo_banner_bottom_left int(5) NOT NULL DEFAULT '0';
+ALTER TABLE product ADD promo_banner_bottom_right int(5) NOT NULL DEFAULT '0';
+ALTER TABLE product ADD promo_date_start date NOT NULL DEFAULT '0000-00-00';
+ALTER TABLE product ADD promo_date_end date NOT NULL DEFAULT '0000-00-00';
+
+CREATE TABLE `promo_tags` (
+  `promo_tags_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `pimage` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `promo_direction` int(5) NOT NULL DEFAULT '0',
+  `promo_text` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `promo_link` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `sort_order` int(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`promo_tags_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+INSERT INTO `promo_tags` (`promo_tags_id`, `image`, `pimage`, `promo_direction`, `promo_text`, `promo_link`,`sort_order`) VALUES
+(1,'data/tags/freeshipping.png','data/tags/shipping.png','0','Free Shipping','','0'),
+(2,'data/tags/buy1get1free.png','','0','Buy 1 Get 1 Free','','0'),
+(3,'data/tags/buy1get1free_freeshipping.png','data/tags/shipping.png','0','Buy 1 Get 1 Free + Free Shipping','','0'),
+(4,'data/tags/buy2get1free.png','','0','Buy 2 Get 1 Free','','0'),
+(5,'data/tags/buy2get1free_freeshipping.png','data/tags/shipping.png','0','Buy 2 Get 1 Free + Free Shipping','','0'),
+(10,'data/tags/cashondelivery.png','','0','Cash On Delivery','','0'),
+(11,'data/tags/callforprice.png','','0','Call For Price','','0'),
+(12,'data/tags/preorder.png','','0','Pre-Order','','0'),
+(13,'data/tags/comingsoon.png','','0','Coming Soon','','0'),
+(14,'data/tags/original.png','','0','Original','','0'),
+(15,'data/tags/replica.png','','0','Replica','','0'),
+(16,'data/tags/freegift.png','','0','Free Gift','','0'),
+(17,'data/tags/supersaver.png','','0','Super Saver','','0'),
+(18,'data/tags/limitedtimeoffer.png','','0','Limited Time Offer','','0'),
+(19,'data/tags/combodeal.png','','0','Combo Deal','','0'),
+(20,'data/tags/bestbuy.png','','0','Best Buy','','0'),
+(21,'data/tags/bestbuy_flag.png','','1','Best Buy','','0'),
+(22,'data/tags/bestbuy_round.png','','1','Best Buy','','0'),
+(23,'data/tags/buynow.png','','2','Buy Now','','0'),
+(24,'data/tags/comingsoon_flag.png','','1','Coming Soon','','0'),
+(25,'data/tags/iwantthis_flag.png','','1','I Want This','','0'),
+(26,'data/tags/newarrival_blue.png','','2','New Arrival','','0'),
+(27,'data/tags/newarrival_flag.png','','1','New Arrival','','0'),
+(28,'data/tags/newarrival_red.png','','2','New Arrival','','0'),
+(36,'data/tags/sale.png','','2','Sales Now','','0'),
+(40,'data/tags/sales_flag.png','','1','Sales Now','','0'),
+(41,'data/tags/satisfy.png','','2','Guarantee Satisfaction','','0'),
+(42,'data/tags/seasonsclearance_flag.png','','1','Seasons Clearance','','0'),
+(43,'data/tags/special.png','','0','Special','','0'),
+(44,'data/tags/specialprice.png','','0','Special Price','','0'),
+(45,'data/tags/specialprice_flag.png','','1','Special Price','','0'),
+(46,'data/tags/splash.png','','2','Splash','','0'),
+(47,'data/tags/supersaver.png','','0','Super Saver','','0'),
+(50,'data/tags/5p.png','','3','5%','','0'),
+(51,'data/tags/10p.png','','3','10%','','0'),
+(52,'data/tags/15p.png','','3','15%','','0'),
+(53,'data/tags/20p.png','','3','20%','','0'),
+(54,'data/tags/25p.png','','3','25%','','0'),
+(55,'data/tags/30p.png','','3','30%','','0'),
+(56,'data/tags/35p.png','','3','35%','','0'),
+(57,'data/tags/40p.png','','3','40%','','0'),
+(58,'data/tags/45p.png','','3','45%','','0'),
+(59,'data/tags/50p.png','','3','50%','','0'),
+(60,'data/tags/55p.png','','3','55%','','0'),
+(61,'data/tags/60p.png','','3','60%','','0'),
+(62,'data/tags/65p.png','','3','65%','','0'),
+(63,'data/tags/70p.png','','3','70%','','0'),
+(64,'data/tags/75p.png','','3','75%','','0'),
+(65,'data/tags/80p.png','','3','80%','','0'),
+(66,'data/tags/85p.png','','3','85%','','0'),
+(67,'data/tags/90p.png','','3','90%','','0'),
+(68,'data/tags/95p.png','','3','95%','','0');

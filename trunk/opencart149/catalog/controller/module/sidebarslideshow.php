@@ -35,7 +35,8 @@ class ControllerModuleSideBarSlideshow extends Controller {
 
 		$this->data['products_time'] = $this->config->get('sidebarslideshow_time')  ;
 
-		foreach ($this->model_catalog_sidebarslideshow->getRandomProduct() as $result) {			
+		//foreach ($this->model_catalog_sidebarslideshow->getRandomProduct() as $result) {
+		foreach ($this->model_catalog_product->getProductSpecials() as $result) {				
 			if ($result['image']) {
 				$image = $result['image'];
 			} else {

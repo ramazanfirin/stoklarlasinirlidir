@@ -217,6 +217,7 @@ class ControllerProductProduct extends Controller {
 					$discountRate = floor((($this->data['price']-$special)*100)/$this->data['price']);
 				} else {
 					$this->data['special'] = FALSE;
+					$discountRate = "";
 				}
 			}
 			
@@ -282,9 +283,7 @@ class ControllerProductProduct extends Controller {
 			$promo_bottom_left = $this->model_catalog_product->getPromo($product_info['product_id'],$product_info['promo_banner_bottom_left']);
 			if (!empty($promo_bottom_left['promo_text']) && $promo_on) {
 				$promo_tags_on_product_bottom_left = '<span class="promotags" style="width:70px;height:70px;top:190px;left:0px;background: url(\'' . 'image/' . $promo_bottom_left['image'] . '\') no-repeat"></span>';
-				
-				
-				$promo_tags_on_product_bottom_left = $promo_tags_on_product_bottom_left.'<span style="font-size: 1.5em;color:white;width:70px;height:70px;top:205px;left:10px;" class="promotags2">  <b>%'.$discountRate.'</b></span>';
+		     	$promo_tags_on_product_bottom_left = $promo_tags_on_product_bottom_left.'<span style="font-size: 1.5em;color:white;width:70px;height:70px;top:205px;left:10px;" class="promotags2">  <b>%'.$discountRate.'</b></span>';
 			
 			
 			

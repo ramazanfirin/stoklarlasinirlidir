@@ -7,6 +7,12 @@
     	if(isset($products[$j])){
 	    	?>
     	    <div class="slide" id="slide<?php echo $j; ?>" <?php if($j == 0) { ?> style="display:visible;height:190px" <?php } else { ?> style="display:none;height:190px" <?php } ?>>
+	    	 <?php if ($products[$j]['special']) { ?>
+               	<div class="banner3" style="margin-left: 80px">
+               		<span style="position:relative;font-size: 1.5em;color:white;width:70px;top:-5px;left:2px;" 
+      				class="">  <b><?php echo $products[$j]['discountRate'];?></b></span>
+      			</div>
+      		<?php } ?>
 	    	<a href="<?php echo $products[$j]['href']; ?>"><img src="<?php echo $products[$j]['thumb']; ?>" title="<?php echo $products[$j]['name']; ?>" alt="<?php echo $products[$j]['name']; ?>" /></a><br />
 	    	<a href="<?php echo $products[$j]['href']; ?>"><?php echo $products[$j]['name']; ?></a><br />
 		    <span style="color: #999; font-size: 11px;"><?php echo $products[$j]['model']; ?></span><br />

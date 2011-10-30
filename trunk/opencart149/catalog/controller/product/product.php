@@ -207,6 +207,7 @@ class ControllerProductProduct extends Controller {
 				
 				$this->data['special'] = FALSE;
 			} else {
+				$price_temp = $this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax'));
 				$this->data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')));
 			
 				$special = $this->model_catalog_product->getProductSpecial($this->request->get['product_id']);
@@ -214,12 +215,14 @@ class ControllerProductProduct extends Controller {
 				if ($special) {
 					$this->data['special'] = $this->currency->format($this->tax->calculate($special, $product_info['tax_class_id'], $this->config->get('config_tax')));
 					$this->data['special_date_end'] = $this->model_catalog_product->getProductSpecialDates($this->request->get['product_id']);
-					$discountRate = floor((($this->data['price']-$special)*100)/$this->data['price']);
+					$discountRate = "%'".floor((($price_temp-$special)*100)/$price_temp);
 				} else {
 					$this->data['special'] = FALSE;
 					$discountRate = "";
 				}
 			}
+			
+			$this->data['discountRate'] = $discountRate;
 			
 			$discounts = $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
 			
@@ -383,6 +386,9 @@ class ControllerProductProduct extends Controller {
 				
 					if ($special) {
 						$special = $this->currency->format($this->tax->calculate($special, $result['tax_class_id'], $this->config->get('config_tax')));
+						$discountRate = floor((($this->data['price']-$special)*100)/$this->data['price']);
+					}else{
+						$discountRate="";
 					}
 				}
 			

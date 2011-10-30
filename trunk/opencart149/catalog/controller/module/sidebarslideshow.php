@@ -58,6 +58,9 @@ class ControllerModuleSideBarSlideshow extends Controller {
 			
 				if ($special) {
 					$special = $this->currency->format($this->tax->calculate($special, $result['tax_class_id'], $this->config->get('config_tax')));
+					$discountRate = "%'".floor((($result['price']-$special)*100)/$result['price']);
+				}else{
+					$discountRate = "";
 				}						
 			}
 				
@@ -69,7 +72,9 @@ class ControllerModuleSideBarSlideshow extends Controller {
 				'thumb'   => $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
             	'price'   => $price,
 				'special' => $special,
+				"discountRate" =>$discountRate,
 				'href'    => $this->model_tool_seo_url->rewrite(HTTPS_SERVER .'index.php?route=product/product&product_id=' . $result['product_id'])
+          		
           	);
 		}
 		

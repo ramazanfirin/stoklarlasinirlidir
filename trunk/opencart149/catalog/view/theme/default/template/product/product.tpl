@@ -1,49 +1,4 @@
 
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.4.1.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.lwtCountdown-1.0.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/misc.js"></script>
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/main.css" />
-
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jqzoom-core.js"></script>
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/jquery.jqzoom.css" />
- 
-       
-       
-		
-
-<script language="javascript" type="text/javascript">
-			jQuery(document).ready(function() {
-				$('#countdown_dashboard').countDown({
-					targetDate: {
-						'day': 		<?php echo date("d", strtotime($special_date_end)); ?> ,
-						'month': 	 <?php echo date("m", strtotime($special_date_end)); ?>,
-						'year': 	 <?php echo date("Y", strtotime($special_date_end)); ?>  ,
-						'hour': 	'0',
-						'min': 		'0',
-						'sec': 		'0'
-					}
-				});
-				
-				
-				
-			});
-		</script>
-		
-	<script type="text/javascript">
-
-	jQuery(document).ready(function() {
-	$('.jqzoom').jqzoom({
-            zoomType: 'standard',
-            lens:true,
-            preloadImages: false,
-            alwaysOn:false
-        });
-	
-});
-
-
-</script>	
-		
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content">
   <div class="top">
@@ -72,7 +27,7 @@
         
         <tr>
           <td style="text-align: center; width: 250px; vertical-align: top;">
-          <a href="<?php echo $popup; ?>"  title="<?php echo $heading_title; ?>" class="jqzoom thickbox" rel="gallery">
+          <a href="<?php echo $popup; ?>"  title="<?php echo $heading_title; ?>" class="thickbox" rel="gallery">
           <img src="<?php echo $thumb; ?>"  title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" 
               style="margin-bottom: 3px;border :1px solid #CCCCCC;background:none repeat scroll 0 0 #F3F3F3;padding:3px" /></a>
           <!-- code start --></div><!-- code end --><br />
@@ -131,6 +86,19 @@
             
             </table>
             
+            <div id="pDisc" class="banner2" style="display:block;position: relative;">
+                <span style="position:relative;font-size: 2em;color:white;width:70px;top:-5px;left:-10px;" 
+      class="">  <b><?php echo $discountRate;?></b></span>
+           
+               <span style="position:absolute;font-size: 2em;color:white;width:70px;top:5px;left:120px;" 
+      class=""> 
+      
+      <img src="image/data/tags/bedava_kargo_3.jpg" width="150px" height="100px"/>  </span>
+           
+              
+            </div>
+            
+           
             <br />
             <?php if ($display_price) { ?>
             <form action="<?php echo str_replace('&', '&amp;', $action); ?>" method="post" enctype="multipart/form-data" id="product">
@@ -352,6 +320,24 @@
   </div>
   <?php } ?>
 </div>
+<script language="javascript" type="text/javascript">
+			jQuery(document).ready(function() {
+				$('#countdown_dashboard').countDown({
+					targetDate: {
+						'day': 		<?php echo date("d", strtotime($special_date_end)); ?> ,
+						'month': 	 <?php echo date("m", strtotime($special_date_end)); ?>,
+						'year': 	 <?php echo date("Y", strtotime($special_date_end)); ?>  ,
+						'hour': 	'0',
+						'min': 		'0',
+						'sec': 		'0'
+					}
+				});
+				
+				
+				
+			});
+		</script>
+
 <script type="text/javascript"><!--
 $('#review .pagination a').live('click', function() {
 	$('#review').slideUp('slow');

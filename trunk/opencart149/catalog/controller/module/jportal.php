@@ -110,6 +110,9 @@ class ControllerModuleJportal extends Controller {
 
 				if ($special) {
 					$special = $this->currency->format($this->tax->calculate($special, $result['tax_class_id'], $this->config->get('config_tax')));
+					$discountRate = "%'".floor((($result['price']-$special)*100)/$result['price']);
+				}else{
+					$discountRate = "";
 				}
 			}
 
@@ -175,7 +178,8 @@ class ControllerModuleJportal extends Controller {
 				'image'   		=> $this->model_tool_image->resize($image, 38, 38),
 				'thumb'   		=> $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
 				'href'    		=> $this->model_tool_seo_url->rewrite(HTTP_SERVER . 'index.php?route=product/product&product_id=' . $result['product_id']),
-				'add'    		=> $add
+				'add'    		=> $add,
+			    'discountRate'  => $discountRate
 			);
 		}
 

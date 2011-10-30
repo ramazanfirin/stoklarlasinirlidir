@@ -21,14 +21,30 @@
   <?php for ($i = 0; $i < sizeof($latest_products); $i = $i + 4) { ?>
     <tr>
       <?php for ($j = $i; $j < ($i + 4); $j++) { ?>
-	  <td style="width: 25%;"><?php if (isset($latest_products[$j])) { ?><!-- code start --><div class="banner"><!-- code end -->
+	  <td style="width: 25%;"><?php if (isset($latest_products[$j])) { ?>
+	  <div class="discountImage">
+	  
+	  
+      <?php if ($latest_products[$j]['special']) { ?>
+      
+      <div class="banner3">
+      <span style="position:relative;font-size: 1.5em;color:white;width:70px;top:-5px;left:2px;" 
+      class="">  <b><?php echo $latest_products[$j]['discountRate'];?></b></span>
+      </div>
+      <?php } ?>
+      
+	  <!-- code start --><div class="banner"><!-- code end -->
+       
       <a href="<?php echo str_replace('&', '&amp;', $latest_products[$j]['href']); ?>">
-	  <!-- code start -->
+	  <!-- code start 
 	  <?php echo $latest_products[$j]['promo_tags_top_right']; ?>
 	  <?php echo $latest_products[$j]['promo_tags_top_left']; ?>
 	  <?php echo $latest_products[$j]['promo_tags_bottom_left']; ?>
 	  <?php echo $latest_products[$j]['promo_tags_bottom_right']; ?>
-	  <!-- code end -->
+	   code end -->
+	 
+	  
+	  
 	  <img src="<?php echo $latest_products[$j]['thumb']; ?>" title="<?php echo $latest_products[$j]['name']; ?>" alt="<?php echo $latest_products[$j]['name']; ?>" /></a><!-- code start --></div><!-- code end -->
       <a href="<?php echo str_replace('&', '&amp;', $latest_products[$j]['href']); ?>"><?php echo $latest_products[$j]['name']; ?></a><br />
       <span style="color: #999; font-size: 11px;"><?php echo $latest_products[$j]['model']; ?></span><br />
@@ -45,7 +61,7 @@
 	  <?php if ($latest_products[$j]['rating']) { ?>
       <img src="catalog/view/theme/default/image/stars_<?php echo $latest_products[$j]['rating'] . '.png'; ?>" alt="<?php echo $latest_products[$j]['stars']; ?>" />
       <?php } ?>
-      <?php } ?></td>
+      <?php } ?></div></td>
       <?php } ?>
     </tr>
     <?php } ?>

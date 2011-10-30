@@ -665,6 +665,34 @@ list-style : none;
 margin: 0;
 padding: 0;
 position: relative;
+padding-top:30px
+}
+.banner2 {
+list-style : none;
+margin: 0;
+padding: 40px;
+position: relative;
+background-image: url('../../../../../image/data/tags/indirimpatlangac.png'); 
+background-repeat: no-repeat; 
+background-position: center left;
+z-index : 6011;
+width : 30px
+}
+.banner3 {
+list-style : none;
+margin: 0;
+padding: 20px;
+margin-left :60px;
+position: absolute;
+background-image: url('../../../../../image/data/tags/indirimpatlangac.gif'); 
+background-repeat: no-repeat; 
+background-position: top right;
+z-index : 6011;
+width : 30px
+}
+.discountImage {
+
+	
 }
 .banner img {
 background: #f3f3f3;
@@ -721,3 +749,5 @@ z-index:1;
     text-align: center;
 }
 /*code end */
+
+}
